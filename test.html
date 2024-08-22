@@ -20,7 +20,7 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
 
-<div class="mt-3 text-center fs-1">Форма реєстрації v.8</div>
+<div class="mt-3 text-center fs-1">Форма реєстрації v.9</div>
 <div class="card m-3">
   <div class="card-header">
     <div class="text-center fst-italic text-body-secondary">
@@ -259,9 +259,8 @@
 
 </body>
 <script type="text/javascript">
-  Telegram.WebApp.expand();
-  'use strict'
-<!--  Telegram.WebApp.ready();-->
+  let tg = window.Telegram.WebApp
+  tg.expand();
 
   const cityInput = document.getElementById("cityInput");
   const nameAndLastInput = document.getElementById("nameAndLastName");
@@ -359,9 +358,9 @@
 
   function isMainButtonActive() {
     if (isShow()) {
-        Telegram.WebApp.MainButton.show();
+        tg.MainButton.show();
     } else {
-        Telegram.WebApp.MainButton.hide();
+        tg.MainButton.hide();
     }
   }
 
@@ -376,7 +375,7 @@
     }
   }
 
-  Telegram.WebApp.MainButton.setText('Зареєструватися');
+  tg.MainButton.setText('Зареєструватися');
   Telegram.WebApp.onEvent('mainButtonClicked', function() {
       const data = JSON.stringify({
         nameAndLastValue: nameAndLastValue,
@@ -387,9 +386,9 @@
         countryValue: countryValue,
         cityValue: cityValue
       });
-      Telegram.WebApp.sendData("test 123");
-<!--      Telegram.WebApp.sendData(data);-->
-      Telegram.WebApp.close();
+<!--      Telegram.WebApp.sendData("test 123");-->
+      tg.sendData(data);
+      tg.close();
   });
 </script>
 </html>

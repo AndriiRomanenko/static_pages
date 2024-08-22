@@ -10,156 +10,7 @@
 
 </head>
 <script type="text/javascript">
-'use strict'
-  Telegram.WebApp.ready();
-  const submitBtn = document.getElementById("submit-btn");
 
-  const cityInput = document.getElementById("cityInput");
-  const nameAndLastInput = document.getElementById("nameAndLastName");
-  const descriptionInput = document.getElementById("serviceDescriptionTextArea");
-  const servicesCBs = document.querySelectorAll("div#serviceCheckboxes > div.form-check > input");
-  const websiteInput = document.getElementById("websiteInput");
-  const averagePriceInput = document.getElementById("averagePriceInput");
-  const countrySelect = document.getElementById("countrySelect");
-  const comissionSwitch = document.getElementById("comissionSwitch");
-
-  let nameAndLastValue = '';
-  let servicesValues = [];
-  let descriptionValue = '';
-  let websiteValue = '';
-  let averagePriceValue = '';
-  let countryValue = '';
-  let cityValue = '';
-
-  let isNameAndLastValid = false;
-  let isCityValid = false;
-  let isServicesValid = false;
-  let isAveragePriceValid = false;
-  let isCountryValid = false;
-  let isComissionValid = false;
-
-  nameAndLastInput.addEventListener("input", event => {
-    isNameAndLastValid = nameAndLastInput !== null && event.target.value !== "";
-    if (isNameAndLastValid) {
-        nameAndLastValue = event.target.value;
-    }
-    submitBtn.disabled = isDisables();
-    isMainButtonActive();
-  }, false);
-
-  Array.from(servicesCBs).forEach(serviceCB => {
-    serviceCB.addEventListener("change", event => {
-        changeServiceArr(event);
-        isServicesValid = servicesValues.length > 0;
-        submitBtn.disabled = isDisables();
-        isMainButtonActive();
-    }, false);
-  });
-
-  descriptionInput.addEventListener("input", event => {
-    const isDescriptionValid = descriptionInput !== null && event.target.value !== "";
-    if (isDescriptionValid) {
-        descriptionValue = event.target.value;
-    }
-    isMainButtonActive();
-<!--    submitBtn.disabled = isDisables();-->
-  }, false);
-
-  websiteInput.addEventListener("input", event => {
-    const isWebsiteValid = websiteInput !== null && event.target.value !== "";
-    if (isWebsiteValid) {
-        websiteValue = event.target.value;
-    }
-    isMainButtonActive();
-<!--    submitBtn.disabled = isDisables();-->
-  }, false);
-
-  averagePriceInput.addEventListener("input", event => {
-    isAveragePriceValid = averagePriceInput !== null && event.target.value !== "";
-    if (isAveragePriceValid) {
-        averagePriceValue = event.target.value;
-    }
-    submitBtn.disabled = isDisables();
-    isMainButtonActive();
-  }, false);
-
-  countrySelect.addEventListener("change", event => {
-    isCountryValid = countrySelect !== null && event.target.value !== "Оберіть країну";
-    if (isCountryValid) {
-        countryValue = event.target.value;
-    }
-    submitBtn.disabled = isDisables();
-    isMainButtonActive();
-  }, false);
-
-  cityInput.addEventListener("input", event => {
-    isCityValid = cityInput !== null && event.target.value !== "";
-    if (isCityValid) {
-        cityValue = event.target.value;
-    }
-    submitBtn.disabled = isDisables();
-    isMainButtonActive();
-  }, false);
-
-  comissionSwitch.addEventListener("input", event => {
-    isComissionValid = cityInput !== null && event.target.checked;
-    submitBtn.disabled = isDisables();
-    isMainButtonActive();
-  }, false);
-
-  submitBtn.addEventListener("click", event => {
-    console.log("nameAndLastValue: " + nameAndLastValue);
-    console.log("servicesValues: " + servicesValues);
-    console.log("descriptionValue: " + descriptionValue);
-    console.log("websiteValue: " + websiteValue);
-    console.log("averagePriceValue: " + averagePriceValue);
-    console.log("countryValue: " + countryValue);
-    console.log("cityValue: " + cityValue);
-  }, false);
-
-  function isDisables() {
-    return !(isCityValid &&
-             isNameAndLastValid &&
-             isServicesValid &&
-             isAveragePriceValid &&
-             isCountryValid &&
-             isComissionValid);
-  }
-
-  function isMainButtonActive() {
-    if (isDisables()) {
-        Telegram.WebApp.MainButton.disable();
-    } else {
-        Telegram.WebApp.MainButton.enable();
-    }
-  }
-
-  function changeServiceArr(event) {
-    if (event.target.checked) {
-        servicesValues.push(event.target.value);
-    } else {
-        let index = servicesValues.indexOf(event.target.value);
-        if (index !== -1) {
-            servicesValues.splice(index, 1);
-        }
-    }
-  }
-
-  Telegram.WebApp.MainButton.setText('Зареєструватися')
-    .show().onClick(function () {
-      const data = JSON.stringify({
-        nameAndLastValue: nameAndLastValue,
-        servicesValues: servicesValues,
-        descriptionValue: descriptionValue,
-        websiteValue: websiteValue,
-        averagePriceValue: averagePriceValue,
-        countryValue: countryValue,
-        cityValue: cityValue,
-        chatId: Telegram.WebApp.initDataUnsafe.user.id
-      });
-      Telegram.WebApp.sendData("data");
-      Telegram.WebApp.close();
-  });
 </script>
 <body style="background-color: #ffffff">
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -169,7 +20,7 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
 
-<div class="mt-3 text-center fs-1">Форма реєстрації v.1</div>
+<div class="mt-3 text-center fs-1">Форма реєстрації v.2</div>
 <div class="card m-3">
   <div class="card-header">
     <div class="text-center fst-italic text-body-secondary">
@@ -413,5 +264,155 @@
 </body>
 <script type="text/javascript">
   Telegram.WebApp.expand();
+  'use strict'
+  Telegram.WebApp.ready();
+  const submitBtn = document.getElementById("submit-btn");
+
+  const cityInput = document.getElementById("cityInput");
+  const nameAndLastInput = document.getElementById("nameAndLastName");
+  const descriptionInput = document.getElementById("serviceDescriptionTextArea");
+  const servicesCBs = document.querySelectorAll("div#serviceCheckboxes > div.form-check > input");
+  const websiteInput = document.getElementById("websiteInput");
+  const averagePriceInput = document.getElementById("averagePriceInput");
+  const countrySelect = document.getElementById("countrySelect");
+  const comissionSwitch = document.getElementById("comissionSwitch");
+
+  let nameAndLastValue = '';
+  let servicesValues = [];
+  let descriptionValue = '';
+  let websiteValue = '';
+  let averagePriceValue = '';
+  let countryValue = '';
+  let cityValue = '';
+
+  let isNameAndLastValid = false;
+  let isCityValid = false;
+  let isServicesValid = false;
+  let isAveragePriceValid = false;
+  let isCountryValid = false;
+  let isComissionValid = false;
+
+  nameAndLastInput.addEventListener("input", event => {
+    isNameAndLastValid = nameAndLastInput !== null && event.target.value !== "";
+    if (isNameAndLastValid) {
+        nameAndLastValue = event.target.value;
+    }
+    submitBtn.disabled = isDisables();
+    isMainButtonActive();
+  }, false);
+
+  Array.from(servicesCBs).forEach(serviceCB => {
+    serviceCB.addEventListener("change", event => {
+        changeServiceArr(event);
+        isServicesValid = servicesValues.length > 0;
+        submitBtn.disabled = isDisables();
+        isMainButtonActive();
+    }, false);
+  });
+
+  descriptionInput.addEventListener("input", event => {
+    const isDescriptionValid = descriptionInput !== null && event.target.value !== "";
+    if (isDescriptionValid) {
+        descriptionValue = event.target.value;
+    }
+    isMainButtonActive();
+<!--    submitBtn.disabled = isDisables();-->
+  }, false);
+
+  websiteInput.addEventListener("input", event => {
+    const isWebsiteValid = websiteInput !== null && event.target.value !== "";
+    if (isWebsiteValid) {
+        websiteValue = event.target.value;
+    }
+    isMainButtonActive();
+<!--    submitBtn.disabled = isDisables();-->
+  }, false);
+
+  averagePriceInput.addEventListener("input", event => {
+    isAveragePriceValid = averagePriceInput !== null && event.target.value !== "";
+    if (isAveragePriceValid) {
+        averagePriceValue = event.target.value;
+    }
+    submitBtn.disabled = isDisables();
+    isMainButtonActive();
+  }, false);
+
+  countrySelect.addEventListener("change", event => {
+    isCountryValid = countrySelect !== null && event.target.value !== "Оберіть країну";
+    if (isCountryValid) {
+        countryValue = event.target.value;
+    }
+    submitBtn.disabled = isDisables();
+    isMainButtonActive();
+  }, false);
+
+  cityInput.addEventListener("input", event => {
+    isCityValid = cityInput !== null && event.target.value !== "";
+    if (isCityValid) {
+        cityValue = event.target.value;
+    }
+    submitBtn.disabled = isDisables();
+    isMainButtonActive();
+  }, false);
+
+  comissionSwitch.addEventListener("input", event => {
+    isComissionValid = cityInput !== null && event.target.checked;
+    submitBtn.disabled = isDisables();
+    isMainButtonActive();
+  }, false);
+
+  submitBtn.addEventListener("click", event => {
+    console.log("nameAndLastValue: " + nameAndLastValue);
+    console.log("servicesValues: " + servicesValues);
+    console.log("descriptionValue: " + descriptionValue);
+    console.log("websiteValue: " + websiteValue);
+    console.log("averagePriceValue: " + averagePriceValue);
+    console.log("countryValue: " + countryValue);
+    console.log("cityValue: " + cityValue);
+  }, false);
+
+  function isDisables() {
+    return !(isCityValid &&
+             isNameAndLastValid &&
+             isServicesValid &&
+             isAveragePriceValid &&
+             isCountryValid &&
+             isComissionValid);
+  }
+
+  function isMainButtonActive() {
+    if (isDisables()) {
+        Telegram.WebApp.MainButton.disable();
+    } else {
+        Telegram.WebApp.MainButton.enable();
+    }
+  }
+
+  function changeServiceArr(event) {
+    if (event.target.checked) {
+        servicesValues.push(event.target.value);
+    } else {
+        let index = servicesValues.indexOf(event.target.value);
+        if (index !== -1) {
+            servicesValues.splice(index, 1);
+        }
+    }
+  }
+
+  Telegram.WebApp.MainButton.setText('Зареєструватися')
+    .show().onClick(function () {
+      const data = JSON.stringify({
+        nameAndLastValue: nameAndLastValue,
+        servicesValues: servicesValues,
+        descriptionValue: descriptionValue,
+        websiteValue: websiteValue,
+        averagePriceValue: averagePriceValue,
+        countryValue: countryValue,
+        cityValue: cityValue,
+        chatId: Telegram.WebApp.initDataUnsafe.user.id
+      });
+      Telegram.WebApp.sendData("data");
+      Telegram.WebApp.close();
+  });
 </script>
 </html>

@@ -10,18 +10,8 @@
 
 </head>
 <script type="text/javascript">
-<!--    const colorPicker = new iro.ColorPicker('#picker', {-->
-<!--        borderColor: "#ffffff",-->
-<!--        borderWidth: 1,-->
-<!--        width: Math.round(document.documentElement.clientWidth / 2),-->
-<!--    });-->
-<!--    colorPicker.on('color:change', function (color) {-->
-<!--        document.body.style.background = color.hexString;-->
-<!--    });-->
-
     Telegram.WebApp.ready();
     Telegram.WebApp.MainButton.setText('Зареєструватися').show().onClick(function () {
-<!--        const data = JSON.stringify({hex: colorPicker.color.hexString, rgb: colorPicker.color.rgb});-->
         Telegram.WebApp.sendData("data");
         Telegram.WebApp.close();
     });
@@ -31,145 +21,145 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 
-<form>
+<!--<form id="registration-form" novalidate>-->
     <div class="mt-3 text-center fs-1">Форма реєстрації</div>
     <div class="m-3">
       <label for="nameAndLastName" class="form-label">Ім'я та прізвище</label>
-      <input type="email" class="form-control" id="nameAndLastName" required>
+      <input type="text" class="form-control" id="nameAndLastName">
     </div>
 
     <div class="m-3">
       <label for="serviceCheckboxes" class="form-label">Ваша послуга</label>
-      <div id="serviceCheckboxes">
-        <div class="form-check" id="animator">
-          <input class="form-check-input" type="checkbox" value="" id="1111">
-          <label class="form-check-label" for="1111">
+      <div id="serviceCheckboxes" class="form-control">
+        <div class="form-check" id="service1">
+          <input class="form-check-input" type="checkbox" value="1" id="serviceCB1">
+          <label class="form-check-label" for="serviceCB1">
             Аніматор
           </label>
         </div>
 
-        <div class="form-check" id="animator">
-          <input class="form-check-input" type="checkbox" value="" id="1111">
-          <label class="form-check-label" for="1111">
+        <div class="form-check" id="service2">
+          <input class="form-check-input" type="checkbox" value="2" id="serviceCB2">
+          <label class="form-check-label" for="serviceCB2">
             Фотограф
           </label>
         </div>
 
-        <div class="form-check" id="animator">
-          <input class="form-check-input" type="checkbox" value="" id="1111">
-          <label class="form-check-label" for="1111">
+        <div class="form-check" id="service3">
+          <input class="form-check-input" type="checkbox" value="3" id="serviceCB3">
+          <label class="form-check-label" for="serviceCB3">
             Відеограф/Оператор
           </label>
         </div>
 
-        <div class="form-check" id="animator">
-          <input class="form-check-input" type="checkbox" value="" id="1111">
-          <label class="form-check-label" for="1111">
+        <div class="form-check" id="service4">
+          <input class="form-check-input" type="checkbox" value="4" id="serviceCB4">
+          <label class="form-check-label" for="serviceCB4">
             Музикант/Вокаліст/Група
           </label>
         </div>
 
-        <div class="form-check" id="animator">
-          <input class="form-check-input" type="checkbox" value="" id="1111">
-          <label class="form-check-label" for="1111">
+        <div class="form-check" id="service5">
+          <input class="form-check-input" type="checkbox" value="5" id="serviceCB5">
+          <label class="form-check-label" for="serviceCB5">
             Ді-Джей
           </label>
         </div>
 
-        <div class="form-check" id="animator">
-          <input class="form-check-input" type="checkbox" value="" id="1111">
-          <label class="form-check-label" for="1111">
+        <div class="form-check" id="service6">
+          <input class="form-check-input" type="checkbox" value="6" id="serviceCB6">
+          <label class="form-check-label" for="serviceCB6">
             Ведучий/Ведуча
           </label>
         </div>
 
-        <div class="form-check" id="animator">
-          <input class="form-check-input" type="checkbox" value="" id="1111">
-          <label class="form-check-label" for="1111">
+        <div class="form-check" id="service7">
+          <input class="form-check-input" type="checkbox" value="7" id="serviceCB7">
+          <label class="form-check-label" for="serviceCB7">
             Декоратор
           </label>
         </div>
 
-        <div class="form-check" id="animator">
-          <input class="form-check-input" type="checkbox" value="" id="1111">
-          <label class="form-check-label" for="1111">
+        <div class="form-check" id="service8">
+          <input class="form-check-input" type="checkbox" value="8" id="serviceCB8">
+          <label class="form-check-label" for="serviceCB8">
             Технічний підрядник
           </label>
         </div>
 
-        <div class="form-check" id="animator">
-          <input class="form-check-input" type="checkbox" value="" id="1111">
-          <label class="form-check-label" for="1111">
+        <div class="form-check" id="service9">
+          <input class="form-check-input" type="checkbox" value="9" id="serviceCB9">
+          <label class="form-check-label" for="serviceCB9">
             Організатор/Координатор
           </label>
         </div>
 
-        <div class="form-check" id="animator">
-          <input class="form-check-input" type="checkbox" value="" id="1111">
-          <label class="form-check-label" for="1111">
+        <div class="form-check" id="service10">
+          <input class="form-check-input" type="checkbox" value="10" id="serviceCB10">
+          <label class="form-check-label" for="serviceCB10">
             Танцор/Танцювальний коллектив
           </label>
         </div>
 
-        <div class="form-check" id="animator">
-          <input class="form-check-input" type="checkbox" value="" id="1111">
-          <label class="form-check-label" for="1111">
+        <div class="form-check" id="service11">
+          <input class="form-check-input" type="checkbox" value="11" id="serviceCB11">
+          <label class="form-check-label" for="serviceCB11">
             Шоу номери
           </label>
         </div>
 
-        <div class="form-check" id="animator">
-          <input class="form-check-input" type="checkbox" value="" id="1111">
-          <label class="form-check-label" for="1111">
+        <div class="form-check" id="service12">
+          <input class="form-check-input" type="checkbox" value="12" id="serviceCB12">
+          <label class="form-check-label" for="serviceCB12">
             Фокусник
           </label>
         </div>
 
-        <div class="form-check" id="animator">
-          <input class="form-check-input" type="checkbox" value="" id="1111">
-          <label class="form-check-label" for="1111">
+        <div class="form-check" id="service13">
+          <input class="form-check-input" type="checkbox" value="13" id="serviceCB13">
+          <label class="form-check-label" for="serviceCB13">
             Аквагрим
           </label>
         </div>
 
-        <div class="form-check" id="animator">
-          <input class="form-check-input" type="checkbox" value="" id="1111">
-          <label class="form-check-label" for="1111">
+        <div class="form-check" id="service14">
+          <input class="form-check-input" type="checkbox" value="14" id="serviceCB14">
+          <label class="form-check-label" for="serviceCB14">
             Кейтерінг
           </label>
         </div>
 
-        <div class="form-check" id="animator">
-          <input class="form-check-input" type="checkbox" value="" id="1111">
-          <label class="form-check-label" for="1111">
+        <div class="form-check" id="service15">
+          <input class="form-check-input" type="checkbox" value="15" id="serviceCB15">
+          <label class="form-check-label" for="serviceCB15">
             Оренда реквізиту/меблів/обладнання
           </label>
         </div>
 
-        <div class="form-check" id="animator">
-          <input class="form-check-input" type="checkbox" value="" id="1111">
-          <label class="form-check-label" for="1111">
+        <div class="form-check" id="service16">
+          <input class="form-check-input" type="checkbox" value="16" id="serviceCB16">
+          <label class="form-check-label" for="serviceCB16">
             Хостес
           </label>
         </div>
 
-        <div class="form-check" id="animator">
-          <input class="form-check-input" type="checkbox" value="" id="1111">
-          <label class="form-check-label" for="1111">
+        <div class="form-check" id="service17">
+          <input class="form-check-input" type="checkbox" value="17" id="serviceCB17">
+          <label class="form-check-label" for="serviceCB17">
             Ростові костюми
           </label>
         </div>
 
-        <div class="form-check" id="animator">
-          <input class="form-check-input" type="checkbox" value="" id="1111">
-          <label class="form-check-label" for="1111">
+        <div class="form-check" id="service18">
+          <input class="form-check-input" type="checkbox" value="18" id="serviceCB18">
+          <label class="form-check-label" for="serviceCB18">
             Трансфер
           </label>
         </div>
 
-        <div class="form-check" id="animator">
-          <input class="form-check-input" type="checkbox" value="" id="1111">
-          <label class="form-check-label" for="1111">
+        <div class="form-check" id="service19">
+          <input class="form-check-input" type="checkbox" value="19" id="serviceCB19">
+          <label class="form-check-label" for="serviceCB19">
             Оренда локації
           </label>
         </div>
@@ -184,18 +174,18 @@
 
     <div class="m-3">
       <label for="websiteInput" class="form-label">Посилання на сайт / інстаграм</label>
-      <input type="email" class="form-control" id="websiteInput" required>
+      <input type="url" class="form-control" id="websiteInput">
     </div>
 
     <div class="m-3">
       <label for="averagePriceInput" class="form-label">Середня вартість послуги</label>
-      <input type="email" class="form-control" id="averagePriceInput" required>
+      <input type="number" class="form-control" id="averagePriceInput" required>
     </div>
 
     <div class="m-3">
         <label for="countrySelect" class="form-label">Країна проживання</label>
         <select class="form-select" aria-label="Default select example" id="countrySelect">
-            <option disabled selected>Оберіть країну</option>
+            <option>Оберіть країну</option>
             <option value="1">Австрія</option>
             <option value="2">Бельгія</option>
             <option value="3">Болгарія</option>
@@ -246,12 +236,146 @@
 
     <div class="m-3">
       <label for="cityInput" class="form-label">Місто проживання</label>
-      <input type="email" class="form-control" id="cityInput" required>
+      <input type="text" class="form-control" id="cityInput" >
     </div>
-</form>
+
+    <div class="form-check form-switch m-3">
+        <input class="form-check-input" type="checkbox" role="switch" id="comissionSwitch">
+        <label class="form-check-label" for="comissionSwitch">
+            Я даю згоду на комісію у 10% від суми виконаного замовлення
+        </label>
+    </div>
+
+    <div class="m-3">
+        <button class="btn btn-primary" disabled="true" id="submit-btn">Button</button>
+    </div>
+
+<!--</form>-->
 </body>
 <script type="text/javascript">
         Telegram.WebApp.expand();
+        (() => {
+  'use strict'
+  const submitBtn = document.getElementById("submit-btn");
 
+  const cityInput = document.getElementById("cityInput");
+  const nameAndLastInput = document.getElementById("nameAndLastName");
+  const descriptionInput = document.getElementById("serviceDescriptionTextArea");
+  const servicesCBs = document.querySelectorAll("div#serviceCheckboxes > div.form-check > input");
+  const websiteInput = document.getElementById("websiteInput");
+  const averagePriceInput = document.getElementById("averagePriceInput");
+  const countrySelect = document.getElementById("countrySelect");
+  const comissionSwitch = document.getElementById("comissionSwitch");
+
+  let nameAndLastValue = '';
+  let servicesValues = [];
+  let descriptionValue = '';
+  let websiteValue = '';
+  let averagePriceValue = '';
+  let countryValue = '';
+  let cityValue = '';
+
+  let isNameAndLastValid = false;
+  let isCityValid = false;
+  let isDescriptionValid = false;
+  let isServicesValid = false;
+  let isWebsiteValid = false;
+  let isAveragePriceValid = false;
+  let isCountryValid = false;
+  let isComissionValid = false;
+
+  nameAndLastInput.addEventListener("input", event => {
+    isNameAndLastValid = nameAndLastInput !== null && event.target.value !== "";
+    if (isNameAndLastValid) {
+        nameAndLastValue = event.target.value;
+    }
+    submitBtn.disabled = isDisables();
+  }, false);
+
+  Array.from(servicesCBs).forEach(serviceCB => {
+    serviceCB.addEventListener("change", event => {
+        changeServiceArr(event);
+        isServicesValid = servicesValues.length > 0;
+        submitBtn.disabled = isDisables();
+    }, false);
+  });
+
+  descriptionInput.addEventListener("input", event => {
+    isDescriptionValid = descriptionInput !== null && event.target.value !== "";
+    if (isDescriptionValid) {
+        descriptionValue = event.target.value;
+    }
+    submitBtn.disabled = isDisables();
+  }, false);
+
+  websiteInput.addEventListener("input", event => {
+    isWebsiteValid = websiteInput !== null && event.target.value !== "";
+    if (isWebsiteValid) {
+        websiteValue = event.target.value;
+    }
+    submitBtn.disabled = isDisables();
+  }, false);
+
+  averagePriceInput.addEventListener("input", event => {
+    isAveragePriceValid = averagePriceInput !== null && event.target.value !== "";
+    if (isAveragePriceValid) {
+        averagePriceValue = event.target.value;
+    }
+    submitBtn.disabled = isDisables();
+  }, false);
+
+  countrySelect.addEventListener("change", event => {
+    isCountryValid = countrySelect !== null && event.target.value !== "Оберіть країну";
+    if (isCountryValid) {
+        averagePriceValue = event.value;
+    }
+    submitBtn.disabled = isDisables();
+  }, false);
+
+  cityInput.addEventListener("input", event => {
+    isCityValid = cityInput !== null && event.target.value !== "";
+    if (isCityValid) {
+        cityValue = event.target.value;
+    }
+    submitBtn.disabled = isDisables();
+  }, false);
+
+  comissionSwitch.addEventListener("input", event => {
+    isComissionValid = cityInput !== null && event.target.checked;
+    submitBtn.disabled = isDisables();
+  }, false);
+
+  submitBtn.addEventListener("click", event => {
+    console.log(nameAndLastValue);
+    console.log(servicesValues);
+    console.log(descriptionValue);
+    console.log(websiteValue);
+    console.log(averagePriceValue);
+    console.log(countryValue);
+    console.log(cityValue);
+  }, false);
+
+  function isDisables() {
+    return !(isCityValid &&
+             isNameAndLastValid &&
+             isServicesValid &&
+             isWebsiteValid &&
+             isAveragePriceValid &&
+             isCountryValid &&
+             isComissionValid);
+  }
+
+  function changeServiceArr(event) {
+    if (event.target.checked) {
+        servicesValues.push(event.target.value);
+    } else {
+        let index = servicesValues.indexOf(event.target.value);
+        if (index !== -1) {
+            servicesValues.splice(index, 1);
+        }
+    }
+  }
+
+})()
 </script>
 </html>

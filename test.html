@@ -20,7 +20,7 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
 
-<div class="mt-3 text-center fs-1">Форма реєстрації v.5</div>
+<div class="mt-3 text-center fs-1">Форма реєстрації v.6</div>
 <div class="card m-3">
   <div class="card-header">
     <div class="text-center fst-italic text-body-secondary">
@@ -261,7 +261,7 @@
 <script type="text/javascript">
   Telegram.WebApp.expand();
   'use strict'
-  Telegram.WebApp.ready();
+<!--  Telegram.WebApp.ready();-->
 
   const cityInput = document.getElementById("cityInput");
   const nameAndLastInput = document.getElementById("nameAndLastName");
@@ -385,11 +385,10 @@
         websiteValue: websiteValue,
         averagePriceValue: averagePriceValue,
         countryValue: countryValue,
-        cityValue: cityValue,
-        chatId: Telegram.WebApp.initDataUnsafe.user.id
+        cityValue: cityValue
       });
-      Telegram.WebApp.sendData("data");
-      Telegram.WebApp.close();
+      Telegram.WebApp.sendData(data);
+<!--      Telegram.WebApp.close();-->
   });
 </script>
 </html>

@@ -11,6 +11,7 @@
 </head>
 <script type="text/javascript">
 'use strict'
+  Telegram.WebApp.ready();
   const submitBtn = document.getElementById("submit-btn");
 
   const cityInput = document.getElementById("cityInput");
@@ -43,6 +44,7 @@
         nameAndLastValue = event.target.value;
     }
     submitBtn.disabled = isDisables();
+    isMainButtonActive();
   }, false);
 
   Array.from(servicesCBs).forEach(serviceCB => {
@@ -50,6 +52,7 @@
         changeServiceArr(event);
         isServicesValid = servicesValues.length > 0;
         submitBtn.disabled = isDisables();
+        isMainButtonActive();
     }, false);
   });
 
@@ -58,6 +61,7 @@
     if (isDescriptionValid) {
         descriptionValue = event.target.value;
     }
+    isMainButtonActive();
 <!--    submitBtn.disabled = isDisables();-->
   }, false);
 
@@ -66,6 +70,7 @@
     if (isWebsiteValid) {
         websiteValue = event.target.value;
     }
+    isMainButtonActive();
 <!--    submitBtn.disabled = isDisables();-->
   }, false);
 
@@ -75,6 +80,7 @@
         averagePriceValue = event.target.value;
     }
     submitBtn.disabled = isDisables();
+    isMainButtonActive();
   }, false);
 
   countrySelect.addEventListener("change", event => {
@@ -83,6 +89,7 @@
         countryValue = event.target.value;
     }
     submitBtn.disabled = isDisables();
+    isMainButtonActive();
   }, false);
 
   cityInput.addEventListener("input", event => {
@@ -91,11 +98,13 @@
         cityValue = event.target.value;
     }
     submitBtn.disabled = isDisables();
+    isMainButtonActive();
   }, false);
 
   comissionSwitch.addEventListener("input", event => {
     isComissionValid = cityInput !== null && event.target.checked;
     submitBtn.disabled = isDisables();
+    isMainButtonActive();
   }, false);
 
   submitBtn.addEventListener("click", event => {
@@ -118,7 +127,11 @@
   }
 
   function isMainButtonActive() {
-    return !isDisables();
+    if (!isDisables()) {
+        Telegram.WebApp.MainButton.show();
+    } else {
+        Telegram.WebApp.MainButton.show();
+    }
   }
 
   function changeServiceArr(event) {
@@ -132,8 +145,7 @@
     }
   }
 
-  Telegram.WebApp.ready();
-  Telegram.WebApp.MainButton.setText('Зареєструватися').isActive(isMainButtonActive())
+  Telegram.WebApp.MainButton.setText('Зареєструватися')
     .show().onClick(function () {
       const data = JSON.stringify({
         nameAndLastValue: nameAndLastValue,

@@ -20,7 +20,7 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
 
-<div class="mt-3 text-center fs-1">Форма реєстрації v.7</div>
+<div class="mt-3 text-center fs-1">Форма реєстрації v.8</div>
 <div class="card m-3">
   <div class="card-header">
     <div class="text-center fst-italic text-body-secondary">
@@ -387,7 +387,8 @@
         countryValue: countryValue,
         cityValue: cityValue
       });
-      Telegram.WebApp.sendData(data);
+      Telegram.WebApp.sendData("test 123");
+<!--      Telegram.WebApp.sendData(data);-->
       Telegram.WebApp.close();
   });
 </script>

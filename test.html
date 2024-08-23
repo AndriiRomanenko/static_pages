@@ -20,12 +20,15 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
 
-<div class="mt-3 text-center fs-1">Форма реєстрації v.11</div>
+<div class="mt-3 text-center fs-1">Форма реєстрації v.12</div>
 <div class="card m-3">
   <div class="card-header">
     <div class="text-center fst-italic text-body-secondary">
         Вашу анкету бачить лише адміністратор бота, який затверджує кандидатів по запитах
     </div>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><span class="text-danger">*</span> - Обов'язкові поля</p>
   </div>
 </div>
 
@@ -298,8 +301,7 @@
         countryValue: countryValue,
         cityValue: cityValue
       });
-<!--      Telegram.WebApp.sendData("test 123");-->
-      tg.sendData(JSON.stringify({test: "test"}));
+      tg.sendData(JSON.stringify(data));
       tg.close();
   });
 

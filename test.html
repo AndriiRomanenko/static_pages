@@ -285,6 +285,23 @@
   let isAveragePriceValid = false;
   let isCountryValid = false;
   let isComissionValid = false;
+  
+  tg.ready();
+  tg.MainButton.setText('Зареєструватися');
+  Telegram.WebApp.onEvent('mainButtonClicked', function() {
+      const data = JSON.stringify({
+        nameAndLastValue: nameAndLastValue,
+        servicesValues: servicesValues,
+        descriptionValue: descriptionValue,
+        websiteValue: websiteValue,
+        averagePriceValue: averagePriceValue,
+        countryValue: countryValue,
+        cityValue: cityValue
+      });
+<!--      Telegram.WebApp.sendData("test 123");-->
+      tg.sendData(data);
+      tg.close();
+  });
 
   nameAndLastInput.addEventListener("input", event => {
     isNameAndLastValid = nameAndLastInput !== null && event.target.value !== "";
@@ -374,21 +391,5 @@
         }
     }
   }
-
-  tg.MainButton.setText('Зареєструватися');
-  Telegram.WebApp.onEvent('mainButtonClicked', function() {
-      const data = JSON.stringify({
-        nameAndLastValue: nameAndLastValue,
-        servicesValues: servicesValues,
-        descriptionValue: descriptionValue,
-        websiteValue: websiteValue,
-        averagePriceValue: averagePriceValue,
-        countryValue: countryValue,
-        cityValue: cityValue
-      });
-<!--      Telegram.WebApp.sendData("test 123");-->
-      tg.sendData(data);
-      tg.close();
-  });
 </script>
 </html>

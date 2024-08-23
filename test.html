@@ -20,7 +20,7 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
 
-<div class="mt-3 text-center fs-1">Форма реєстрації</div>
+<div class="mt-3 text-center fs-1">Форма реєстрації v.10</div>
 <div class="card m-3">
   <div class="card-header">
     <div class="text-center fst-italic text-body-secondary">
@@ -28,154 +28,41 @@
     </div>
   </div>
   <div class="card-body">
-    <p class="card-text"><span class="text-danger">*</span> - Обов'язкові поля</p>
+      <span class="text-danger">*</span> -  Обов'язково для заповнення
   </div>
 </div>
 
 <div class="m-3">
     <label for="nameAndLastName" class="form-label">Ім'я та прізвище</label>
     <span class="text-danger">*</span>
-    <input type="text" class="form-control" id="nameAndLastName">
+    <input type="text" class="form-control border-dark-subtle" id="nameAndLastName">
 </div>
 
 <div class="m-3">
-    <label for="serviceCheckboxes" class="form-label">Ваша послуга</label>
+    <label for="countrySelect" class="form-label">Ваша послуга</label>
     <span class="text-danger">*</span>
-    <div id="serviceCheckboxes" class="form-control">
-        <div class="form-check" id="service1">
-            <input class="form-check-input" type="checkbox" value="1" id="serviceCB1">
-            <label class="form-check-label" for="serviceCB1">
-                Аніматор
-            </label>
-        </div>
-
-        <div class="form-check" id="service2">
-            <input class="form-check-input" type="checkbox" value="2" id="serviceCB2">
-            <label class="form-check-label" for="serviceCB2">
-                Фотограф
-            </label>
-        </div>
-
-        <div class="form-check" id="service3">
-            <input class="form-check-input" type="checkbox" value="3" id="serviceCB3">
-            <label class="form-check-label" for="serviceCB3">
-                Відеограф/Оператор
-            </label>
-        </div>
-
-        <div class="form-check" id="service4">
-            <input class="form-check-input" type="checkbox" value="4" id="serviceCB4">
-            <label class="form-check-label" for="serviceCB4">
-                Музикант/Вокаліст/Група
-            </label>
-        </div>
-
-        <div class="form-check" id="service5">
-            <input class="form-check-input" type="checkbox" value="5" id="serviceCB5">
-            <label class="form-check-label" for="serviceCB5">
-                Ді-Джей
-            </label>
-        </div>
-
-        <div class="form-check" id="service6">
-            <input class="form-check-input" type="checkbox" value="6" id="serviceCB6">
-            <label class="form-check-label" for="serviceCB6">
-                Ведучий/Ведуча
-            </label>
-        </div>
-
-        <div class="form-check" id="service7">
-            <input class="form-check-input" type="checkbox" value="7" id="serviceCB7">
-            <label class="form-check-label" for="serviceCB7">
-                Декоратор
-            </label>
-        </div>
-
-        <div class="form-check" id="service8">
-            <input class="form-check-input" type="checkbox" value="8" id="serviceCB8">
-            <label class="form-check-label" for="serviceCB8">
-                Технічний підрядник
-            </label>
-        </div>
-
-        <div class="form-check" id="service9">
-            <input class="form-check-input" type="checkbox" value="9" id="serviceCB9">
-            <label class="form-check-label" for="serviceCB9">
-                Організатор/Координатор
-            </label>
-        </div>
-
-        <div class="form-check" id="service10">
-            <input class="form-check-input" type="checkbox" value="10" id="serviceCB10">
-            <label class="form-check-label" for="serviceCB10">
-                Танцор/Танцювальний коллектив
-            </label>
-        </div>
-
-        <div class="form-check" id="service11">
-            <input class="form-check-input" type="checkbox" value="11" id="serviceCB11">
-            <label class="form-check-label" for="serviceCB11">
-                Шоу номери
-            </label>
-        </div>
-
-        <div class="form-check" id="service12">
-            <input class="form-check-input" type="checkbox" value="12" id="serviceCB12">
-            <label class="form-check-label" for="serviceCB12">
-                Фокусник
-            </label>
-        </div>
-
-        <div class="form-check" id="service13">
-            <input class="form-check-input" type="checkbox" value="13" id="serviceCB13">
-            <label class="form-check-label" for="serviceCB13">
-                Аквагрим
-            </label>
-        </div>
-
-        <div class="form-check" id="service14">
-            <input class="form-check-input" type="checkbox" value="14" id="serviceCB14">
-            <label class="form-check-label" for="serviceCB14">
-                Кейтерінг
-            </label>
-        </div>
-
-        <div class="form-check" id="service15">
-            <input class="form-check-input" type="checkbox" value="15" id="serviceCB15">
-            <label class="form-check-label" for="serviceCB15">
-                Оренда реквізиту/меблів/обладнання
-            </label>
-        </div>
-
-        <div class="form-check" id="service16">
-            <input class="form-check-input" type="checkbox" value="16" id="serviceCB16">
-            <label class="form-check-label" for="serviceCB16">
-                Хостес
-            </label>
-        </div>
-
-        <div class="form-check" id="service17">
-            <input class="form-check-input" type="checkbox" value="17" id="serviceCB17">
-            <label class="form-check-label" for="serviceCB17">
-                Ростові костюми
-            </label>
-        </div>
-
-        <div class="form-check" id="service18">
-            <input class="form-check-input" type="checkbox" value="18" id="serviceCB18">
-            <label class="form-check-label" for="serviceCB18">
-                Трансфер
-            </label>
-        </div>
-
-        <div class="form-check" id="service19">
-            <input class="form-check-input" type="checkbox" value="19" id="serviceCB19">
-            <label class="form-check-label" for="serviceCB19">
-                Оренда локації
-            </label>
-        </div>
-    </div>
-
+    <select class="form-select" multiple size="5" id="servicesSelect">
+        <option>Оберіть послугу</option>
+        <option value="1">Аніматор</option>
+        <option value="2">Фотограф</option>
+        <option value="3">Відеограф/Оператор</option>
+        <option value="4">Музикант/Вокаліст/Група</option>
+        <option value="5">Ді-Джей</option>
+        <option value="6">Ведучий/Ведуча</option>
+        <option value="7">Декоратор</option>
+        <option value="8">Технічний підрядник</option>
+        <option value="9">Організатор/Координатор</option>
+        <option value="10">Танцор/Танцювальний коллектив</option>
+        <option value="11">Шоу номери</option>
+        <option value="12">Фокусник</option>
+        <option value="13">Аквагрим</option>
+        <option value="14">Кейтерінг</option>
+        <option value="15">Оренда реквізиту/меблів/обладнання</option>
+        <option value="16">Хостес</option>
+        <option value="17">Ростові костюми</option>
+        <option value="18">Трансфер</option>
+        <option value="19">Оренда локації</option>
+    </select>
 </div>
 
 <div class="m-3">
@@ -191,7 +78,7 @@
 <div class="m-3">
     <label for="averagePriceInput" class="form-label">Середня вартість послуги</label>
     <span class="text-danger">*</span>
-    <input type="number" class="form-control" id="averagePriceInput" required>
+    <input type="text" class="form-control" id="averagePriceInput" required>
 </div>
 
 <div class="m-3">
@@ -268,7 +155,7 @@
   const cityInput = document.getElementById("cityInput");
   const nameAndLastInput = document.getElementById("nameAndLastName");
   const descriptionInput = document.getElementById("serviceDescriptionTextArea");
-  const servicesCBs = document.querySelectorAll("div#serviceCheckboxes > div.form-check > input");
+  const serviceSelect = document.getElementById("servicesSelect");
   const websiteInput = document.getElementById("websiteInput");
   const averagePriceInput = document.getElementById("averagePriceInput");
   const countrySelect = document.getElementById("countrySelect");
@@ -289,22 +176,6 @@
   let isCountryValid = false;
   let isComissionValid = false;
 
-  tg.ready();
-  tg.MainButton.setText('Зареєструватися');
-  Telegram.WebApp.onEvent('mainButtonClicked', function() {
-      const data = JSON.stringify({
-        nameAndLastValue: nameAndLastValue,
-        servicesValues: servicesValues,
-        descriptionValue: descriptionValue,
-        websiteValue: websiteValue,
-        averagePriceValue: averagePriceValue,
-        countryValue: countryValue,
-        cityValue: cityValue
-      });
-      tg.sendData(JSON.stringify(data));
-      tg.close();
-  });
-
   nameAndLastInput.addEventListener("input", event => {
     isNameAndLastValid = nameAndLastInput !== null && event.target.value !== "";
     if (isNameAndLastValid) {
@@ -312,14 +183,24 @@
     }
     isMainButtonActive();
   }, false);
+  nameAndLastInput.addEventListener("keypress", event => {
+    if (event.which == 13) {
+        event.preventDefault();
+        serviceSelect.focus();
+    }
+  }, false);
 
-  Array.from(servicesCBs).forEach(serviceCB => {
-    serviceCB.addEventListener("change", event => {
-        changeServiceArr(event);
-        isServicesValid = servicesValues.length > 0;
-        isMainButtonActive();
-    }, false);
-  });
+  serviceSelect.addEventListener("change", event => {
+      servicesValues = changeServiceArr(event);
+      isServicesValid = servicesValues.length > 0;
+      isMainButtonActive();
+  }, false);
+  serviceSelect.addEventListener("keypress", event => {
+    if (event.which == 13) {
+        event.preventDefault();
+        descriptionInput.focus();
+    }
+  }, false);
 
   descriptionInput.addEventListener("input", event => {
     const isDescriptionValid = descriptionInput !== null && event.target.value !== "";
@@ -327,6 +208,12 @@
         descriptionValue = event.target.value;
     }
     isMainButtonActive();
+  }, false);
+  descriptionInput.addEventListener("keypress", event => {
+    if (event.which == 13) {
+        event.preventDefault();
+        websiteInput.focus();
+    }
   }, false);
 
   websiteInput.addEventListener("input", event => {
@@ -336,6 +223,12 @@
     }
     isMainButtonActive();
   }, false);
+  websiteInput.addEventListener("keypress", event => {
+    if (event.which == 13) {
+        event.preventDefault();
+        averagePriceInput.focus();
+    }
+  }, false);
 
   averagePriceInput.addEventListener("input", event => {
     isAveragePriceValid = averagePriceInput !== null && event.target.value !== "";
@@ -343,6 +236,12 @@
         averagePriceValue = event.target.value;
     }
     isMainButtonActive();
+  }, false);
+  averagePriceInput.addEventListener("keypress", event => {
+    if (event.which == 13) {
+        event.preventDefault();
+        countrySelect.focus();
+    }
   }, false);
 
   countrySelect.addEventListener("change", event => {
@@ -352,6 +251,12 @@
     }
     isMainButtonActive();
   }, false);
+  countrySelect.addEventListener("keypress", event => {
+    if (event.which == 13) {
+        event.preventDefault();
+        cityInput.focus();
+    }
+  }, false);
 
   cityInput.addEventListener("input", event => {
     isCityValid = cityInput !== null && event.target.value !== "";
@@ -360,11 +265,18 @@
     }
     isMainButtonActive();
   }, false);
+  cityInput.addEventListener("keypress", event => {
+    if (event.which == 13) {
+        event.preventDefault();
+        comissionSwitch.focus();
+    }
+  }, false);
 
   comissionSwitch.addEventListener("input", event => {
     isComissionValid = cityInput !== null && event.target.checked;
     isMainButtonActive();
   }, false);
+
 
   function isShow() {
     return isCityValid &&
@@ -384,14 +296,25 @@
   }
 
   function changeServiceArr(event) {
-    if (event.target.checked) {
-        servicesValues.push(event.target.value);
-    } else {
-        let index = servicesValues.indexOf(event.target.value);
-        if (index !== -1) {
-            servicesValues.splice(index, 1);
-        }
-    }
+    result = Array.from(event.target.options)
+        .filter((element) => element.selected && element.innerText !== "Оберіть послугу")
+        .map((element) => element.innerText);
+    return result;
   }
+
+  tg.MainButton.setText('Зареєструватися');
+  Telegram.WebApp.onEvent('mainButtonClicked', function() {
+      const data = JSON.stringify({
+        nameAndLastValue: nameAndLastValue,
+        servicesValues: servicesValues,
+        descriptionValue: descriptionValue,
+        websiteValue: websiteValue,
+        averagePriceValue: averagePriceValue,
+        countryValue: countryValue,
+        cityValue: cityValue
+      });
+      tg.sendData(data);
+      tg.close();
+  });
 </script>
 </html>

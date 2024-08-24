@@ -9,6 +9,43 @@
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 </head>
+<style>
+    .checkbox-lg .form-check-input{
+        top: .8rem;
+        scale: 1.4;
+        margin-right: 0.7rem;
+    }
+
+    .checkbox-lg .form-check-label {
+        padding-top: 13px;
+    }
+
+    .checkbox-xl .form-check-input {
+        top: 1.2rem;
+        scale: 1.7;
+        margin-right: 0.8rem;
+        margin-left: -25px;
+    }
+
+    .checkbox-xl .form-check-label {
+        padding-top: 19px;
+        padding-left: 10px;
+    }
+
+    .switch-container {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .switch-container > label {
+        padding-bottom: 13px;
+        padding-left: 10px;
+    }
+
+</style>
 <script type="text/javascript">
 
 </script>
@@ -20,7 +57,7 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
 
-<div class="mt-3 text-center fs-1">Форма реєстрації v.15</div>
+<div class="mt-3 text-center fs-1">Форма реєстрації v.16</div>
 <div class="card m-3">
   <div class="card-header">
     <div class="text-center fst-italic text-body-secondary">
@@ -155,8 +192,8 @@
     </div>
 </div>
 
-<div class="form-check form-switch m-3">
-    <input class="form-check-input" type="checkbox" role="switch" id="comissionSwitch">
+<div class="form-check form-switch m-3 checkbox-xl switch-container">
+    <input class="form-check-input" type="checkbox" role="switch" id="comissionSwitch" style="form-switch-width: 5em">
     <label class="form-check-label" for="comissionSwitch">
         Я даю згоду на комісію у 10% від суми виконаного замовлення
     </label>

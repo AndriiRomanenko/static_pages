@@ -20,7 +20,7 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
 
-<div class="mt-3 text-center fs-1">Форма реєстрації v.10</div>
+<div class="mt-3 text-center fs-1">Форма реєстрації v.12</div>
 <div class="card m-3">
   <div class="card-header">
     <div class="text-center fst-italic text-body-secondary">
@@ -42,7 +42,7 @@
     <label for="countrySelect" class="form-label">Ваша послуга</label>
     <span class="text-danger">*</span>
     <select class="form-select" multiple size="5" id="servicesSelect">
-        <option>Оберіть послугу</option>
+        <option disabled selected>Оберіть послугу</option>
         <option value="1">Аніматор</option>
         <option value="2">Фотограф</option>
         <option value="3">Відеограф/Оператор</option>
@@ -85,7 +85,7 @@
     <label for="countrySelect" class="form-label">Країна проживання</label>
     <span class="text-danger">*</span>
     <select class="form-select" aria-label="Default select example" id="countrySelect">
-        <option>Оберіть країну</option>
+        <option disabled selected>Оберіть країну</option>
         <option value="1">Австрія</option>
         <option value="2">Бельгія</option>
         <option value="3">Болгарія</option>
@@ -145,6 +145,18 @@
     <label class="form-check-label" for="comissionSwitch">
         Я даю згоду на комісію у 10% від суми виконаного замовлення
     </label>
+</div>
+
+<div class="card m-3">
+  <div class="card-header">
+    <div class="text-center text-body-secondary">
+        <p>Хочемо звернути увагу, що вашу анкету бачить тільки адміністратор бота який затверджує кандидатів по запитах.</p>
+        <div class="text-center fw-bold text-body-secondary">
+            <p>На кожен запит адмін погоджує не більше 4 учасників.</p>
+        </div>
+        <p>Якщо вас погодив адміністратор, ви отримаєте контакти замовника і далі пишете замовнику напряму (уточніть все що вам потрібно по запиту і відправьте інформацію по ваших послугах)</p>
+    </div>
+  </div>
 </div>
 
 </body>
@@ -247,7 +259,7 @@
   countrySelect.addEventListener("change", event => {
     isCountryValid = countrySelect !== null && event.target.value !== "Оберіть країну";
     if (isCountryValid) {
-        countryValue = event.target.value;
+        countryValue = event.target.innerText;
     }
     isMainButtonActive();
   }, false);

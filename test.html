@@ -70,6 +70,7 @@
 </div>
 
 <div class="m-3">
+    <a id="nameAndLastNameAnchor"></a>
     <label for="nameAndLastName" class="form-label">Ім'я та прізвище</label>
     <span class="text-danger">*</span>
     <input type="text" class="form-control border-2" id="nameAndLastName" required>
@@ -79,6 +80,7 @@
 </div>
 
 <div class="m-3">
+    <a id="servicesAnchor"></a>
     <label for="countrySelect" class="form-label">Ваша послуга</label>
     <span class="text-danger">*</span>
     <select class="form-select border-2" multiple size="5" id="servicesSelect">
@@ -118,6 +120,7 @@
 </div>
 
 <div class="m-3">
+    <a id="averageAnchor"></a>
     <label for="averagePriceInput" class="form-label">Середня вартість послуги</label>
     <span class="text-danger">*</span>
     <input type="text" class="form-control border-2" id="averagePriceInput" required>
@@ -127,6 +130,7 @@
 </div>
 
 <div class="m-3">
+    <a id="countryAnchor"></a>
     <label for="countrySelect" class="form-label">Країна проживання</label>
     <span class="text-danger">*</span>
     <select class="form-select border-2" aria-label="Default select example" id="countrySelect">
@@ -183,6 +187,7 @@
 </div>
 
 <div class="m-3">
+    <a id="cityAnchor"></a>
     <label for="cityInput" class="form-label">Місто проживання</label>
     <span class="text-danger">*</span>
     <input type="text" class="form-control border-2" id="cityInput">
@@ -433,6 +438,9 @@
     isComissionValid = cityInput !== null && event.target.checked;
     isMainButtonActive();
     constructValidationCard();
+    if (isComissionValid) {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
   }, false);
 
   function constructValidationCard() {
@@ -443,22 +451,22 @@
         let body = document.querySelector("div#validationCard > div.card-body");
         let text = '';
         if (!isNameAndLastValid) {
-            text += "<p>- Введіть Ім'я та Прізвище</p>";
+            text += `<p>- Введіть Ім'я та Прізвище <a href="#nameAndLastNameAnchor">☝️</a></p>`;
         }
         if (!isServicesValid) {
-            text += "<p>- Оберіть послуги</p>";
+            text += `<p>- Оберіть послуги <a href="#servicesAnchor">☝️</a></p>`;
         }
         if (!isAveragePriceValid) {
-            text += "<p>- Вкажіть середню вартість вашіх послуг</p>";
+            text += `<p>- Вкажіть середню вартість вашіх послуг <a href="#averageAnchor">☝️</a></p>`;
         }
         if (!isCountryValid) {
-            text += "<p>- Оберіть країну проживання</p>";
+            text += `<p>- Оберіть країну проживання <a href="#countryAnchor">☝️</a></p>`;
         }
         if (!isCityValid) {
-            text += "<p>- Введіть місто проживання</p>";
+            text += `<p>- Введіть місто проживання <a href="#cityAnchor">☝️</a></p>`;
         }
         if (!isComissionValid) {
-            text += "<p>- Ваша анкета буде розглядатись тільки за умови Вашої згоди на коміссію у 10% від суми виконаного замовлення</p>";
+            text += `<p>- Ваша анкета буде розглядатись тільки за умови Вашої згоди на коміссію у 10% від суми виконаного замовлення</p>`;
         }
         body.innerHTML = text;
     }

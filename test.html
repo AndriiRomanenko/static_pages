@@ -451,19 +451,19 @@
         let body = document.querySelector("div#validationCard > div.card-body");
         let text = '';
         if (!isNameAndLastValid) {
-            text += `<p>- Введіть Ім'я та Прізвище <a href="#nameAndLastNameAnchor">☝️</a></p>`;
+            text += `<p>- Введіть Ім'я та Прізвище: <a href="#nameAndLastNameAnchor" class="link-light link-offset-2 link-underline-opacity-100">[перейти]</a></p>`;
         }
         if (!isServicesValid) {
-            text += `<p>- Оберіть послуги <a href="#servicesAnchor">☝️</a></p>`;
+            text += `<p>- Оберіть послуги: <a href="#servicesAnchor" class="link-light link-offset-2 link-underline-opacity-100">[перейти]</a></p>`;
         }
         if (!isAveragePriceValid) {
-            text += `<p>- Вкажіть середню вартість вашіх послуг <a href="#averageAnchor">☝️</a></p>`;
+            text += `<p>- Вкажіть середню вартість вашіх послуг: <a href="#averageAnchor" class="link-light link-offset-2 link-underline-opacity-100">[перейти]</a></p>`;
         }
         if (!isCountryValid) {
-            text += `<p>- Оберіть країну проживання <a href="#countryAnchor">☝️</a></p>`;
+            text += `<p>- Оберіть країну проживання: <a href="#countryAnchor" class="link-light link-offset-2 link-underline-opacity-100">[перейти]</a></p>`;
         }
         if (!isCityValid) {
-            text += `<p>- Введіть місто проживання <a href="#cityAnchor">☝️</a></p>`;
+            text += `<p>- Введіть місто проживання: <a href="#cityAnchor" class="link-light link-offset-2 link-underline-opacity-100">[перейти]</a></p>`;
         }
         if (!isComissionValid) {
             text += `<p>- Ваша анкета буде розглядатись тільки за умови Вашої згоди на коміссію у 10% від суми виконаного замовлення</p>`;

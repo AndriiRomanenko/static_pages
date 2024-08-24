@@ -57,7 +57,7 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
 
-<div class="mt-3 text-center fs-1">Форма реєстрації v.16</div>
+<div class="mt-3 text-center fs-1">Форма реєстрації v.17</div>
 <div class="card m-3">
   <div class="card-header">
     <div class="text-center fst-italic text-body-secondary">
@@ -199,6 +199,12 @@
     </label>
 </div>
 
+<div class="card text-bg-danger m-3" id="validationCard" hidden>
+  <div class="card-header text-center">Обов'язкові поля не заповнені</div>
+  <div class="card-body">
+  </div>
+</div>
+
 <div class="card m-3">
   <div class="card-header">
     <div class="text-center text-body-secondary">
@@ -208,13 +214,6 @@
         </div>
         <p>Якщо вас погодив адміністратор - ви отримаєте контакти замовника і далі пишете замовнику напряму (уточніть все, що вам потрібно по запиту та надішліть інформацію по ваших послугах)</p>
     </div>
-  </div>
-</div>
-
-<div class="card text-bg-danger m-3" id="validationCard">
-  <div class="card-header text-center">Обов'язкові поля не заповнені</div>
-  <div class="card-body">
-    Some quick example text to build on the card title and make up the bulk of the card's content.
   </div>
 </div>
 
@@ -261,6 +260,7 @@
         event.preventDefault();
         serviceSelect.focus();
     }
+    constructValidationCard();
   }, false);
   nameAndLastInput.addEventListener("focusout", event => {
     if (event.target.value !== "") {
@@ -270,6 +270,7 @@
         nameAndLastInput.classList.add("is-invalid");
         nameAndLastInput.classList.remove("is-valid");
     }
+    constructValidationCard();
   }, false);
 
 
@@ -284,6 +285,7 @@
         event.preventDefault();
         descriptionInput.focus();
     }
+    constructValidationCard();
   }, false);
   serviceSelect.addEventListener("focusout", event => {
     if (event.target.value !== "") {
@@ -293,6 +295,7 @@
         serviceSelect.classList.add("is-invalid");
         serviceSelect.classList.remove("is-valid");
     }
+    constructValidationCard();
   }, false);
 
   descriptionInput.addEventListener("input", event => {
@@ -301,12 +304,14 @@
         descriptionValue = event.target.value;
     }
     isMainButtonActive();
+    constructValidationCard();
   }, false);
   descriptionInput.addEventListener("keypress", event => {
     if (event.which == 13) {
         event.preventDefault();
         websiteInput.focus();
     }
+    constructValidationCard();
   }, false);
 
   websiteInput.addEventListener("input", event => {
@@ -315,12 +320,14 @@
         websiteValue = event.target.value;
     }
     isMainButtonActive();
+    constructValidationCard();
   }, false);
   websiteInput.addEventListener("keypress", event => {
     if (event.which == 13) {
         event.preventDefault();
         averagePriceInput.focus();
     }
+    constructValidationCard();
   }, false);
 
   averagePriceInput.addEventListener("input", event => {
@@ -336,6 +343,7 @@
         event.preventDefault();
         countrySelect.focus();
     }
+    constructValidationCard();
   }, false);
   averagePriceInput.addEventListener("focusout", event => {
     if (event.target.value !== "") {
@@ -345,6 +353,7 @@
         averagePriceInput.classList.add("is-invalid");
         averagePriceInput.classList.remove("is-valid");
     }
+    constructValidationCard();
   }, false);
 
   countrySelect.addEventListener("change", event => {
@@ -362,6 +371,7 @@
         event.preventDefault();
         cityInput.focus();
     }
+    constructValidationCard();
   }, false);
   countrySelect.addEventListener("focusout", event => {
     if (event.target.value !== "") {
@@ -371,6 +381,7 @@
         countrySelect.classList.add("is-invalid");
         countrySelect.classList.remove("is-valid");
     }
+    constructValidationCard();
   }, false);
 
   cityInput.addEventListener("input", event => {
@@ -386,6 +397,7 @@
         event.preventDefault();
         comissionSwitch.focus();
     }
+    constructValidationCard();
   }, false);
   cityInput.addEventListener("focusout", event => {
     if (event.target.value !== "") {
@@ -395,11 +407,13 @@
         cityInput.classList.add("is-invalid");
         cityInput.classList.remove("is-valid");
     }
+    constructValidationCard();
   }, false);
 
   comissionSwitch.addEventListener("input", event => {
     isComissionValid = cityInput !== null && event.target.checked;
     isMainButtonActive();
+    constructValidationCard();
   }, false);
 
   function constructValidationCard() {
@@ -408,10 +422,26 @@
     } else {
         validationCard.hidden = false;
         let body = document.querySelector("div#validationCard > div.card-body");
-        console.log(body);
-        if (!isCityValid) {
-            insertRequiredField(body, "Введіть місто");
+        let text = '';
+        if (!isNameAndLastValid) {
+            text += "<p>- Введіть Ім'я та Прізвище</p>";
         }
+        if (!isServicesValid) {
+            text += "<p>- Оберіть послуги</p>";
+        }
+        if (!isAveragePriceValid) {
+            text += "<p>- Вкажіть середню вартість вашіх послуг</p>";
+        }
+        if (!isCountryValid) {
+            text += "<p>- Оберіть країну проживання</p>";
+        }
+        if (!isCityValid) {
+            text += "<p>- Введіть місто проживання</p>";
+        }
+        if (!isComissionValid) {
+            text += "<p>- Ваша анкета буде розглядатись тільки за умови Вашої згоди на коміссію у 10% від суми виконаного замовлення</p>";
+        }
+        body.innerHTML = text;
     }
   }
 

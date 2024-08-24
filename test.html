@@ -211,6 +211,13 @@
   </div>
 </div>
 
+<div class="card text-bg-danger m-3" id="validationCard">
+  <div class="card-header text-center">Обов'язкові поля не заповнені</div>
+  <div class="card-body">
+    Some quick example text to build on the card title and make up the bulk of the card's content.
+  </div>
+</div>
+
 </body>
 <script type="text/javascript">
   let tg = window.Telegram.WebApp
@@ -224,6 +231,7 @@
   const averagePriceInput = document.getElementById("averagePriceInput");
   const countrySelect = document.getElementById("countrySelect");
   const comissionSwitch = document.getElementById("comissionSwitch");
+  const validationCard = document.getElementById("validationCard");
 
   let nameAndLastValue = '';
   let servicesValues = [];
@@ -246,6 +254,7 @@
         nameAndLastValue = event.target.value;
     }
     isMainButtonActive();
+    constructValidationCard();
   }, false);
   nameAndLastInput.addEventListener("keypress", event => {
     if (event.which == 13) {
@@ -268,6 +277,7 @@
       servicesValues = changeServiceArr(event);
       isServicesValid = servicesValues.length > 0;
       isMainButtonActive();
+      constructValidationCard();
   }, false);
   serviceSelect.addEventListener("keypress", event => {
     if (event.which == 13) {
@@ -319,6 +329,7 @@
         averagePriceValue = event.target.value;
     }
     isMainButtonActive();
+    constructValidationCard();
   }, false);
   averagePriceInput.addEventListener("keypress", event => {
     if (event.which == 13) {
@@ -344,6 +355,7 @@
             .map((element) => element.innerText)[0];
     }
     isMainButtonActive();
+    constructValidationCard();
   }, false);
   countrySelect.addEventListener("keypress", event => {
     if (event.which == 13) {
@@ -366,6 +378,7 @@
     if (isCityValid) {
         cityValue = event.target.value;
     }
+    constructValidationCard();
     isMainButtonActive();
   }, false);
   cityInput.addEventListener("keypress", event => {
@@ -389,6 +402,25 @@
     isMainButtonActive();
   }, false);
 
+  function constructValidationCard() {
+    if (isShow()) {
+        validationCard.hidden = true;
+    } else {
+        validationCard.hidden = false;
+        let body = document.querySelector("div#validationCard > div.card-body");
+        console.log(body);
+        if (!isCityValid) {
+            insertRequiredField(body, "Введіть місто");
+        }
+    }
+  }
+
+  function insertRequiredField(element, text) {
+    const para = document.createElement("p");
+    const node = document.createTextNode(text);
+    para.appendChild(node);
+    element.after(para);
+  }
 
   function isShow() {
     return isCityValid &&

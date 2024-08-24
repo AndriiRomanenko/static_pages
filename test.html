@@ -35,13 +35,16 @@
 <div class="m-3">
     <label for="nameAndLastName" class="form-label">Ім'я та прізвище</label>
     <span class="text-danger">*</span>
-    <input type="text" class="form-control border-dark-subtle" id="nameAndLastName">
+    <input type="text" class="form-control border-2" id="nameAndLastName" required>
+    <div class="invalid-feedback">
+        Поле повинно бути заповненим
+    </div>
 </div>
 
 <div class="m-3">
     <label for="countrySelect" class="form-label">Ваша послуга</label>
     <span class="text-danger">*</span>
-    <select class="form-select" multiple size="5" id="servicesSelect">
+    <select class="form-select border-2" multiple size="5" id="servicesSelect">
 <!--        <option disabled selected>Оберіть послугу</option>-->
         <option value="1">Аніматор</option>
         <option value="2">Фотограф</option>
@@ -63,28 +66,34 @@
         <option value="18">Трансфер</option>
         <option value="19">Оренда локації</option>
     </select>
+    <div class="invalid-feedback">
+        Оберіть країну
+    </div>
 </div>
 
 <div class="m-3">
     <label for="serviceDescriptionTextArea" class="form-label">Опис послуги</label>
-    <textarea class="form-control" id="serviceDescriptionTextArea" rows="2"></textarea>
+    <textarea class="form-control border-2" id="serviceDescriptionTextArea" rows="2"></textarea>
 </div>
 
 <div class="m-3">
     <label for="websiteInput" class="form-label">Посилання на сайт / інстаграм</label>
-    <input type="url" class="form-control" id="websiteInput">
+    <input type="url" class="form-control border-2" id="websiteInput">
 </div>
 
 <div class="m-3">
     <label for="averagePriceInput" class="form-label">Середня вартість послуги</label>
     <span class="text-danger">*</span>
-    <input type="text" class="form-control" id="averagePriceInput" required>
+    <input type="text" class="form-control border-2" id="averagePriceInput" required>
+    <div class="invalid-feedback">
+        Поле повинно бути заповненим
+    </div>
 </div>
 
 <div class="m-3">
     <label for="countrySelect" class="form-label">Країна проживання</label>
     <span class="text-danger">*</span>
-    <select class="form-select" aria-label="Default select example" id="countrySelect">
+    <select class="form-select border-2" aria-label="Default select example" id="countrySelect">
 <!--        <option disabled selected>Оберіть країну</option>-->
         <option value="1">Австрія</option>
         <option value="2">Бельгія</option>
@@ -132,12 +141,18 @@
         <option value="44">Швейцарія</option>
         <option value="45">Швеція</option>
     </select>
+    <div class="invalid-feedback">
+        Оберіть країну
+    </div>
 </div>
 
 <div class="m-3">
     <label for="cityInput" class="form-label">Місто проживання</label>
     <span class="text-danger">*</span>
-    <input type="text" class="form-control" id="cityInput">
+    <input type="text" class="form-control border-2" id="cityInput">
+    <div class="invalid-feedback">
+        Поле повинно бути заповненим
+    </div>
 </div>
 
 <div class="form-check form-switch m-3">
@@ -201,6 +216,16 @@
         serviceSelect.focus();
     }
   }, false);
+  nameAndLastInput.addEventListener("focusout", event => {
+    if (event.target.value !== "") {
+        nameAndLastInput.classList.add("is-valid");
+        nameAndLastInput.classList.remove("is-invalid");
+    } else {
+        nameAndLastInput.classList.add("is-invalid");
+        nameAndLastInput.classList.remove("is-valid");
+    }
+  }, false);
+
 
   serviceSelect.addEventListener("change", event => {
       servicesValues = changeServiceArr(event);
@@ -211,6 +236,15 @@
     if (event.which == 13) {
         event.preventDefault();
         descriptionInput.focus();
+    }
+  }, false);
+  serviceSelect.addEventListener("focusout", event => {
+    if (event.target.value !== "") {
+        serviceSelect.classList.add("is-valid");
+        serviceSelect.classList.remove("is-invalid");
+    } else {
+        serviceSelect.classList.add("is-invalid");
+        serviceSelect.classList.remove("is-valid");
     }
   }, false);
 
@@ -255,6 +289,15 @@
         countrySelect.focus();
     }
   }, false);
+  averagePriceInput.addEventListener("focusout", event => {
+    if (event.target.value !== "") {
+        averagePriceInput.classList.add("is-valid");
+        averagePriceInput.classList.remove("is-invalid");
+    } else {
+        averagePriceInput.classList.add("is-invalid");
+        averagePriceInput.classList.remove("is-valid");
+    }
+  }, false);
 
   countrySelect.addEventListener("change", event => {
     isCountryValid = countrySelect !== null && event.target.value !== "Оберіть країну";
@@ -269,6 +312,15 @@
         cityInput.focus();
     }
   }, false);
+  countrySelect.addEventListener("focusout", event => {
+    if (event.target.value !== "") {
+        countrySelect.classList.add("is-valid");
+        countrySelect.classList.remove("is-invalid");
+    } else {
+        countrySelect.classList.add("is-invalid");
+        countrySelect.classList.remove("is-valid");
+    }
+  }, false);
 
   cityInput.addEventListener("input", event => {
     isCityValid = cityInput !== null && event.target.value !== "";
@@ -281,6 +333,15 @@
     if (event.which == 13) {
         event.preventDefault();
         comissionSwitch.focus();
+    }
+  }, false);
+  cityInput.addEventListener("focusout", event => {
+    if (event.target.value !== "") {
+        cityInput.classList.add("is-valid");
+        cityInput.classList.remove("is-invalid");
+    } else {
+        cityInput.classList.add("is-invalid");
+        cityInput.classList.remove("is-valid");
     }
   }, false);
 

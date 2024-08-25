@@ -9,46 +9,6 @@
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 </head>
-<style>
-    .checkbox-lg .form-check-input{
-        top: .8rem;
-        scale: 1.4;
-        margin-right: 0.7rem;
-    }
-
-    .checkbox-lg .form-check-label {
-        padding-top: 13px;
-    }
-
-    .checkbox-xl .form-check-input {
-        top: 1.2rem;
-        scale: 1.7;
-        margin-right: 0.8rem;
-        margin-left: -25px;
-    }
-
-    .checkbox-xl .form-check-label {
-        padding-top: 19px;
-        padding-left: 10px;
-    }
-
-    .switch-container {
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        align-items: center;
-        flex-direction: row;
-    }
-
-    .switch-container > label {
-        padding-bottom: 13px;
-        padding-left: 10px;
-    }
-
-</style>
-<script type="text/javascript">
-
-</script>
 <body style="background-color: #ffffff">
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -67,9 +27,9 @@
 <div class="m-3">
     <label for="candidateCount" class="form-label">Максимальна кількість кандидатів</label>
     <span class="text-danger">*</span>
-    <input type="number" class="form-control border-2" id="candidateCount" required>
+    <input type="number" class="form-control border-2 is-valid" id="candidateCount" value="4" required>
     <div class="invalid-feedback">
-        Поле повинно бути заповненим
+        Значення має бути між 4 до 20
     </div>
 </div>
 
@@ -162,7 +122,7 @@
     <div class="card-header text-center">Обрані параметри</div>
     <ul class="list-group list-group-flush" id="list">
         <li class="list-group-item" id="count">
-            <div class="fw-bold">Максимальна кількість кандидатів: </div>
+            <div class="fw-bold">Максимальна кількість кандидатів: </div> 4
         </li>
         <li class="list-group-item" id="services">
             <div class="fw-bold">Обрані послуги: </div>
@@ -183,7 +143,7 @@
   const countrySelect = document.getElementById("countrySelect");
   const validationCard = document.getElementById("validationCard");
 
-  let candidateCountValue = '';
+  let candidateCountValue = 4;
   let servicesValues = [];
   let countryValue = '';
 
@@ -211,7 +171,7 @@
         candidateCount.classList.remove("is-valid");
   }, false);
   candidateCount.addEventListener("focusout", event => {
-    if (event.target.value !== "") {
+    if (event.target.value !== "" && event.target.value > 3 && event.target.value < 21) {
         candidateCount.classList.add("is-valid");
         candidateCount.classList.remove("is-invalid");
     } else {
@@ -224,7 +184,7 @@
 
   serviceSelect.addEventListener("change", event => {
       servicesValues = changeServiceArr(event);
-      isServicesValid = !isDefaultServiceWasChosen(event);
+      isServicesValid = servicesValues.length > 0;
       isMainButtonActive();
       constructValidationCard();
   }, false);
@@ -240,7 +200,7 @@
         serviceSelect.classList.remove("is-valid");
   }, false);
   serviceSelect.addEventListener("focusout", event => {
-    if (!isDefaultServiceWasChosen(event)) {
+    if (servicesValues.length > 0) {
         serviceSelect.classList.add("is-valid");
         serviceSelect.classList.remove("is-invalid");
     } else {
@@ -266,7 +226,7 @@
     if (event.which == 13) {
         event.preventDefault();
     }
-    if (isComissionValid) {
+    if (isCountryValid) {
         window.scrollTo(0, document.body.scrollHeight);
     }
     constructValidationCard();
@@ -287,18 +247,12 @@
   }, false);
 
   function constructValidationCard() {
-<!--     if (candidateCountValid) {-->
         countElement = document.querySelector("div#validationCard > ul#list > li#count");
         countElement.innerHTML = `<div class="fw-bold">Максимальна кількість кандидатів:</div> ${candidateCountValue}`;
-<!--     }-->
-<!--     if (isServicesValid) {-->
         servicesElement = document.querySelector("div#validationCard > ul#list > li#services");
         servicesElement.innerHTML = `<div class="fw-bold">Обрані послуги:</div> ${servicesValues}`;
-<!--     }-->
-<!--     if (isCountryValid) {-->
         countryElement = document.querySelector("div#validationCard > ul#list > li#country");
         countryElement.innerHTML = `<div class="fw-bold">Країна:</div> ${countryValue}`;
-<!--     }-->
   }
 
   function insertRequiredField(element, text) {
@@ -338,7 +292,7 @@
   tg.MainButton.setText('Сформувати замовлення');
   Telegram.WebApp.onEvent('mainButtonClicked', function() {
       const data = JSON.stringify({
-        candidateCount: candidateCount,
+        candidateCount: candidateCountValue,
         servicesValues: servicesValues,
         countryValue: countryValue,
         type: 2

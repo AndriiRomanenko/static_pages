@@ -9,6 +9,14 @@
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 </head>
+<style>
+    .center-button {
+        width: 300px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+</style>
 <body style="background-color: #ffffff">
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -25,19 +33,20 @@
         Поле повинно бути заповненим
     </div>
 </div>
-
+<input class="btn btn-primary center-button" type="submit" id="but" hidden value="Відправити дату">
 </body>
 <script type="text/javascript">
   let tg = window.Telegram.WebApp
 <!--  tg.expand();-->
 
+  const button = document.getElementById("but");
   const dateInput = document.getElementById("dateInput");
   let dateInputValue = '';
   let dateInputValid = false;
 
   dateInput.addEventListener("input", event => {
     dateInputValid = dateInput !== null && event.target.value !== "";
-    if (contactValid) {
+    if (dateInputValid) {
         dateInputValue = event.target.value;
     }
     isMainButtonActive();
@@ -48,15 +57,24 @@
     }
   }, false);
 
+  button.addEventListener("submit", event => {
+    const data = JSON.stringify({
+        dateValue: dateInputValue,
+        type: 4
+      });
+      tg.sendData(data);
+      tg.close();
+  }, false);
+
   function isShow() {
-    return contactValid;
+    return dateInputValid;
   }
 
   function isMainButtonActive() {
     if (isShow()) {
-        tg.MainButton.show();
+        button.hidden = false;
     } else {
-        tg.MainButton.hide();
+        button.hidden = true;
     }
   }
 

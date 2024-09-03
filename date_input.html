@@ -70,11 +70,19 @@
     return dateInputValid;
   }
 
+<!--  function isMainButtonActive() {-->
+<!--    if (isShow()) {-->
+<!--        button.hidden = false;-->
+<!--    } else {-->
+<!--        button.hidden = true;-->
+<!--    }-->
+<!--  }-->
+  
   function isMainButtonActive() {
     if (isShow()) {
-        button.hidden = false;
+        tg.MainButton.show();
     } else {
-        button.hidden = true;
+        tg.MainButton.hide();
     }
   }
 

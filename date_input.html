@@ -33,7 +33,7 @@
   let dateInputValid = false;
 
   dateInput.addEventListener("input", event => {
-    dateInputValid = dateInput !== null && event.target.value !== "";
+    dateInputValid = isValidData();
     if (dateInputValid) {
         dateInputValue = event.target.value;
     }
@@ -50,7 +50,7 @@
   }, false);
   dateInput.addEventListener("focusout", event => {
     console.log(event);
-    if (isValidateData(event)) {
+    if (isValidData(event)) {
         dateInput.classList.add("is-valid");
         dateInput.classList.remove("is-invalid");
     } else {
@@ -61,7 +61,7 @@
     }
   }, false);
 
-  function isValidateData(event) {
+  function isValidData(event) {
     let chosenDate = Date.parse(event.target.value)
     let now = new Date();
     now.setHours(0,0,0,0);

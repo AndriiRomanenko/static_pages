@@ -9,14 +9,6 @@
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 </head>
-<style>
-    .center-button {
-        width: 300px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: center;
-    }
-</style>
 <body style="background-color: #ffffff">
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -25,21 +17,17 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
 
-<div class="m-3">
+<div class="m-3" id="dateContainer">
     <label for="dateInput" class="form-label">Дата заходу</label>
     <span class="text-danger">*</span>
     <input type="date" class="form-control border-2" id="dateInput" required>
-    <div class="invalid-feedback">
-        Поле повинно бути заповненим
+    <div class="invalid-feedback" id="validationMessage">
     </div>
 </div>
-<input class="btn btn-primary center-button" type="submit" id="but" hidden value="Відправити дату">
 </body>
 <script type="text/javascript">
   let tg = window.Telegram.WebApp
-<!--  tg.expand();-->
 
-  const button = document.getElementById("but");
   const dateInput = document.getElementById("dateInput");
   let dateInputValue = '';
   let dateInputValid = false;
@@ -56,28 +44,42 @@
         event.preventDefault();
     }
   }, false);
-
-  button.addEventListener("submit", event => {
-    const data = JSON.stringify({
-        dateValue: dateInputValue,
-        type: 4
-      });
-      tg.sendData(data);
-      tg.close();
+  dateInput.addEventListener("focusin", event => {
+        dateInput.classList.remove("is-invalid");
+        dateInput.classList.remove("is-valid");
   }, false);
+  dateInput.addEventListener("focusout", event => {
+    console.log(event);
+    if (isValidateData(event)) {
+        dateInput.classList.add("is-valid");
+        dateInput.classList.remove("is-invalid");
+    } else {
+        dateInput.classList.add("is-invalid");
+        dateInput.classList.remove("is-valid");
+        let invalidDiv = document.querySelector("div#validationMessage");
+        invalidDiv.innerHTML = getValidationMessage(event);
+    }
+  }, false);
+
+  function isValidateData(event) {
+    let chosenDate = Date.parse(event.target.value)
+    let now = new Date();
+    now.setHours(0,0,0,0);
+    return event.target.value !== "" && !isNaN(chosenDate) && chosenDate > now;
+  }
+
+  function getValidationMessage(event) {
+    let chosenDate = Date.parse(event.target.value);
+    let now = new Date();
+    if (event.target.value === "") return "Оберіть дату";
+    if (isNaN(chosenDate)) return "Невірний формат дати";
+    if (chosenDate < now) return "Оберіть дату у майбутньому";
+  }
 
   function isShow() {
     return dateInputValid;
   }
 
-<!--  function isMainButtonActive() {-->
-<!--    if (isShow()) {-->
-<!--        button.hidden = false;-->
-<!--    } else {-->
-<!--        button.hidden = true;-->
-<!--    }-->
-<!--  }-->
-  
   function isMainButtonActive() {
     if (isShow()) {
         tg.MainButton.show();

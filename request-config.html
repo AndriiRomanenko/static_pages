@@ -36,7 +36,8 @@
 <div class="m-3">
     <label for="servicesSelect" class="form-label">Належить до послуг/послуги</label>
     <span class="text-danger">*</span>
-    <select class="form-select border-2" multiple size="5" id="servicesSelect">
+    <select class="form-select border-2 is-valid" multiple size="5" id="servicesSelect">
+        <option value="0" selected>[Без послуги]</option>
         <option value="1">Аніматор</option>
         <option value="2">Фотограф</option>
         <option value="3">Відеограф/Оператор</option>
@@ -56,6 +57,7 @@
         <option value="17">Ростові костюми</option>
         <option value="18">Трансфер</option>
         <option value="19">Оренда локації</option>
+        <option value="20">Флорист/Декоратор</option>
     </select>
     <div class="invalid-feedback">
         Оберіть послугу
@@ -144,7 +146,7 @@
   const validationCard = document.getElementById("validationCard");
 
   let candidateCountValue = 4;
-  let servicesValues = [];
+  let servicesValues = ['[Без послуги]'];
   let countryValue = '';
 
   let candidateCountValid = true;
@@ -275,16 +277,15 @@
   }
 
   function changeServiceArr(event) {
-    return Array.from(event.target.options)
-        .filter((element) => element.selected && element.innerText !== "Оберіть послугу")
+    result = Array.from(event.target.options)
+        .filter((element) => element.selected)
         .map((element) => element.innerText);
-  }
-
-  function isDefaultServiceWasChosen(event) {
-    const hasDefaultArr = Array.from(event.target.options)
-        .filter((element) => element.selected && element.innerText == "Оберіть послугу")
-        .map((element) => element.innerText);
-    return hasDefaultArr.length == 1;
+    if (result.length > 1) {
+        return Array.from(event.target.options)
+            .filter((element) => element.selected && element.innerText !== "[Без послуги]")
+            .map((element) => element.innerText);
+    }
+    return result;
   }
 
   tg.MainButton.setText('Сформувати замовлення');

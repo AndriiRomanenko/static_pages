@@ -36,8 +36,8 @@
 <div class="m-3">
     <label for="servicesSelect" class="form-label">Належить до послуг/послуги</label>
     <span class="text-danger">*</span>
-    <select class="form-select border-2 is-valid" multiple size="5" id="servicesSelect">
-        <option value="0" selected>[Без послуги]</option>
+    <select class="form-select border-2" multiple size="5" id="servicesSelect">
+        <option value="0">[Без послуги]</option>
         <option value="1">Аніматор</option>
         <option value="2">Фотограф</option>
         <option value="3">Відеограф/Оператор</option>
@@ -146,7 +146,7 @@
   const validationCard = document.getElementById("validationCard");
 
   let candidateCountValue = 4;
-  let servicesValues = ['[Без послуги]'];
+  let servicesValues = [];
   let countryValue = '';
 
   let candidateCountValid = true;
@@ -195,6 +195,7 @@
         event.preventDefault();
         countrySelect.focus();
     }
+    window.scrollTo(0, document.body.scrollHeight);
     constructValidationCard();
   }, false);
   serviceSelect.addEventListener("focusin", event => {

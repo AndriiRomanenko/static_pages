@@ -29,7 +29,7 @@
     <span class="text-danger">*</span>
     <input type="number" class="form-control border-2 is-valid" id="candidateCount" value="4" required>
     <div class="invalid-feedback">
-        Значення має бути між 4 до 20
+        Значення має бути більше 0
     </div>
 </div>
 
@@ -173,7 +173,7 @@
         candidateCount.classList.remove("is-valid");
   }, false);
   candidateCount.addEventListener("focusout", event => {
-    if (event.target.value !== "" && event.target.value > 3 && event.target.value < 21) {
+    if (event.target.value !== "" && event.target.value > 0 && event.target.value < 21) {
         candidateCount.classList.add("is-valid");
         candidateCount.classList.remove("is-invalid");
     } else {

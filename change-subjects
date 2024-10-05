@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Форма реєстрації</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+<style>
+    .checkbox-lg .form-check-input{
+        top: .8rem;
+        scale: 1.4;
+        margin-right: 0.7rem;
+    }
+
+    .checkbox-lg .form-check-label {
+        padding-top: 13px;
+    }
+
+    .checkbox-xl .form-check-input {
+        top: 1.2rem;
+        scale: 1.7;
+        margin-right: 0.8rem;
+        margin-left: -25px;
+    }
+
+    .checkbox-xl .form-check-label {
+        padding-top: 19px;
+        padding-left: 10px;
+    }
+
+    .switch-container {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .switch-container > label {
+        padding-bottom: 13px;
+        padding-left: 10px;
+    }
+
+</style>
+<script type="text/javascript">
+
+</script>
+<body style="background-color: #ffffff">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+
+<div class="mt-3 text-center fs-1">Оновлення данних о послугах</div>
+<div class="card m-3">
+  <div class="card-body">
+      <span class="text-danger">*</span> -  Обов'язково для заповнення
+  </div>
+</div>
+
+<div class="m-3">
+    <a id="servicesAnchor"></a>
+    <label for="countrySelect" class="form-label">Ваша послуга</label>
+    <span class="text-danger">*</span>
+    <select class="form-select border-2" multiple size="5" id="servicesSelect">
+        <option value="1">Аніматор</option>
+        <option value="2">Фотограф</option>
+        <option value="3">Відеограф/Оператор</option>
+        <option value="4">Музикант/Вокаліст/Група</option>
+        <option value="5">Ді-Джей</option>
+        <option value="6">Ведучий/Ведуча</option>
+        <option value="7">Декоратор</option>
+        <option value="8">Технічний підрядник</option>
+        <option value="9">Організатор/Координатор</option>
+        <option value="10">Танцор/Танцювальний коллектив</option>
+        <option value="11">Шоу номери</option>
+        <option value="12">Фокусник</option>
+        <option value="13">Аквагрим</option>
+        <option value="14">Кейтерінг</option>
+        <option value="15">Оренда реквізиту/меблів/обладнання</option>
+        <option value="16">Хостес</option>
+        <option value="17">Ростові костюми</option>
+        <option value="18">Трансфер</option>
+        <option value="19">Оренда локації</option>
+        <option value="20">Флорист/Декоратор</option>
+    </select>
+    <div class="invalid-feedback">
+        Оберіть послугу
+    </div>
+</div>
+
+<div class="m-3">
+    <label for="serviceDescriptionTextArea" class="form-label">Опис послуги</label>
+    <textarea class="form-control border-2" id="serviceDescriptionTextArea" rows="2"></textarea>
+</div>
+
+<div class="m-3">
+    <label for="websiteInput" class="form-label">Посилання на сайт / інстаграм</label>
+    <input type="url" class="form-control border-2" id="websiteInput">
+</div>
+
+<div class="m-3">
+    <a id="averageAnchor"></a>
+    <label for="averagePriceInput" class="form-label">Середня вартість послуги</label>
+    <span class="text-danger">*</span>
+    <input type="text" class="form-control border-2" id="averagePriceInput" required>
+    <div class="invalid-feedback">
+        Поле повинно бути заповненим
+    </div>
+</div>
+
+<div class="card text-bg-danger m-3" id="validationCard" hidden>
+  <div class="card-header text-center">Обов'язкові поля не заповнені</div>
+  <div class="card-body">
+  </div>
+</div>
+
+<div class="card m-3">
+  <div class="card-header">
+    <div class="text-center text-body-secondary">
+        <p>Хочемо звернути увагу, що вашу анкету бачить тільки адміністратор бота, який затверджує кандидатів по запитах.</p>
+        <div class="text-center fw-bold text-body-secondary">
+            <p>На кожен запит адмін погоджує не більше 4 учасників.</p>
+        </div>
+        <p>Якщо вас погодив адміністратор - ви отримаєте контакти замовника і далі пишете замовнику напряму (уточніть все, що вам потрібно по запиту та надішліть інформацію по ваших послугах)</p>
+    </div>
+  </div>
+</div>
+
+</body>
+<script type="text/javascript">
+  let tg = window.Telegram.WebApp
+  tg.expand();
+
+  const descriptionInput = document.getElementById("serviceDescriptionTextArea");
+  const serviceSelect = document.getElementById("servicesSelect");
+  const websiteInput = document.getElementById("websiteInput");
+  const averagePriceInput = document.getElementById("averagePriceInput");
+  const validationCard = document.getElementById("validationCard");
+
+  let servicesValues = [];
+  let descriptionValue = '';
+  let websiteValue = '';
+  let averagePriceValue = '';
+
+  let isCityValid = false;
+  let isServicesValid = false;
+  let isAveragePriceValid = false;
+  let isCountryValid = false;
+
+  serviceSelect.addEventListener("change", event => {
+      servicesValues = changeServiceArr(event);
+      isServicesValid = !isDefaultServiceWasChosen(event);
+      isMainButtonActive();
+      constructValidationCard();
+  }, false);
+  serviceSelect.addEventListener("keypress", event => {
+    if (event.which == 13) {
+        event.preventDefault();
+        descriptionInput.focus();
+    }
+    constructValidationCard();
+  }, false);
+  serviceSelect.addEventListener("focusin", event => {
+        serviceSelect.classList.remove("is-invalid");
+        serviceSelect.classList.remove("is-valid");
+  }, false);
+  serviceSelect.addEventListener("focusout", event => {
+    if (!isDefaultServiceWasChosen(event)) {
+        serviceSelect.classList.add("is-valid");
+        serviceSelect.classList.remove("is-invalid");
+    } else {
+        serviceSelect.classList.add("is-invalid");
+        serviceSelect.classList.remove("is-valid");
+    }
+    constructValidationCard();
+  }, false);
+
+  descriptionInput.addEventListener("input", event => {
+    const isDescriptionValid = descriptionInput !== null && event.target.value !== "";
+    if (isDescriptionValid) {
+        descriptionValue = event.target.value;
+    }
+    isMainButtonActive();
+    constructValidationCard();
+  }, false);
+  descriptionInput.addEventListener("keypress", event => {
+    if (event.which == 13) {
+        event.preventDefault();
+        websiteInput.focus();
+    }
+    constructValidationCard();
+  }, false);
+
+  websiteInput.addEventListener("input", event => {
+    const isWebsiteValid = websiteInput !== null && event.target.value !== "";
+    if (isWebsiteValid) {
+        websiteValue = event.target.value;
+    }
+    isMainButtonActive();
+    constructValidationCard();
+  }, false);
+  websiteInput.addEventListener("keypress", event => {
+    if (event.which == 13) {
+        event.preventDefault();
+        averagePriceInput.focus();
+    }
+    constructValidationCard();
+  }, false);
+
+  averagePriceInput.addEventListener("input", event => {
+    isAveragePriceValid = averagePriceInput !== null && event.target.value !== "";
+    if (isAveragePriceValid) {
+        averagePriceValue = event.target.value;
+    }
+    isMainButtonActive();
+    constructValidationCard();
+  }, false);
+  averagePriceInput.addEventListener("keypress", event => {
+    if (event.which == 13) {
+        event.preventDefault();
+    }
+    constructValidationCard();
+  }, false);
+  averagePriceInput.addEventListener("focusin", event => {
+        averagePriceInput.classList.remove("is-invalid");
+        averagePriceInput.classList.remove("is-valid");
+  }, false);
+  averagePriceInput.addEventListener("focusout", event => {
+    if (event.target.value !== "") {
+        averagePriceInput.classList.add("is-valid");
+        averagePriceInput.classList.remove("is-invalid");
+    } else {
+        averagePriceInput.classList.add("is-invalid");
+        averagePriceInput.classList.remove("is-valid");
+    }
+    constructValidationCard();
+  }, false);
+
+
+  function constructValidationCard() {
+    if (isShow()) {
+        validationCard.hidden = true;
+    } else {
+        validationCard.hidden = false;
+        let body = document.querySelector("div#validationCard > div.card-body");
+        let text = '';
+        if (!isServicesValid) {
+            text += `<p>- Оберіть послуги: <a href="#servicesAnchor" class="link-light link-offset-2 link-underline-opacity-100">[перейти]</a></p>`;
+        }
+        if (!isAveragePriceValid) {
+            text += `<p>- Вкажіть середню вартість вашіх послуг: <a href="#averageAnchor" class="link-light link-offset-2 link-underline-opacity-100">[перейти]</a></p>`;
+        }
+        body.innerHTML = text;
+    }
+  }
+
+  function insertRequiredField(element, text) {
+    const para = document.createElement("p");
+    const node = document.createTextNode(text);
+    para.appendChild(node);
+    element.after(para);
+  }
+
+  function isShow() {
+    return isServicesValid &&
+           isAveragePriceValid &&
+           isCountryValid;
+  }
+
+  function isMainButtonActive() {
+    if (isShow()) {
+        tg.MainButton.show();
+    } else {
+        tg.MainButton.hide();
+    }
+  }
+
+  function changeServiceArr(event) {
+    return Array.from(event.target.options)
+        .filter((element) => element.selected && element.innerText !== "Оберіть послугу")
+        .map((element) => element.innerText);
+  }
+
+  function isDefaultServiceWasChosen(event) {
+    const hasDefaultArr = Array.from(event.target.options)
+        .filter((element) => element.selected && element.innerText == "Оберіть послугу")
+        .map((element) => element.innerText);
+    return hasDefaultArr.length == 1;
+  }
+
+  tg.MainButton.setText('Оновити дані');
+  Telegram.WebApp.onEvent('mainButtonClicked', function() {
+      const data = JSON.stringify({
+        servicesValues: servicesValues,
+        descriptionValue: descriptionValue,
+        websiteValue: websiteValue,
+        averagePriceValue: averagePriceValue,
+        type: 5
+      });
+      tg.sendData(data);
+      tg.close();
+  });
+</script>
+</html>

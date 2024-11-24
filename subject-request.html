@@ -167,7 +167,7 @@
 
   let nameValue = '';
   let companyInfoValue = '';
-  let countryValue = '';
+  let countryValues = [];
 
   let isNameValid = false;
   let companyInfoValid = false;
@@ -233,12 +233,8 @@
   }, false);
 
   countrySelect.addEventListener("change", event => {
-    isCountryValid = countrySelect !== null && event.target.value !== "Оберіть країну";
-    if (isCountryValid) {
-        countryValue = result = Array.from(event.target.options)
-            .filter((element) => element.selected && element.innerText !== "Оберіть країну")
-            .map((element) => element.innerText)[0];
-    }
+    countryValues = changeCountryArr(event);
+    isCountryValid = !isDefaultCountryWasChosen(event);
     isMainButtonActive();
     constructValidationCard();
   }, false);
@@ -263,6 +259,19 @@
     }
     constructValidationCard();
   }, false);
+
+  function changeCountryArr(event) {
+    return Array.from(event.target.options)
+        .filter((element) => element.selected && element.innerText !== "Оберіть країну")
+        .map((element) => element.innerText);
+  }
+
+  function isDefaultCountryWasChosen(event) {
+    const hasDefaultArr = Array.from(event.target.options)
+        .filter((element) => element.selected && element.innerText == "Оберіть країну")
+        .map((element) => element.innerText);
+    return hasDefaultArr.length == 1;
+  }
 
   function constructValidationCard() {
     if (isShow()) {
@@ -310,7 +319,7 @@
       const data = JSON.stringify({
         nameValue: nameValue,
         companyInfoValue: companyInfoValue,
-        countryValue: countryValue,
+        countryValues: countryValues,
         type: 7
       });
       tg.sendData(data);

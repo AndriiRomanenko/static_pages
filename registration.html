@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Форма заявки</title>
+    <title>Форма реєстрації</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -57,28 +57,74 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
 
-<div class="mt-3 text-center fs-1">Форма заявки для категорії <br><b>Пасажирські перевезення та посилки</b></div>
+<div class="mt-3 text-center fs-1">Форма реєстрації</div>
 <div class="card m-3">
+  <div class="card-header">
+    <div class="text-center fst-italic text-body-secondary">
+        Вашу анкету бачить лише адміністратор бота, який затверджує кандидатів по запитах
+    </div>
+  </div>
   <div class="card-body">
       <span class="text-danger">*</span> -  Обов'язково для заповнення
   </div>
 </div>
 
 <div class="m-3">
-    <a id="name"></a>
-    <label for="nameInput" class="form-label">Назва транспортної компанії</label>
+    <a id="nameAndLastNameAnchor"></a>
+    <label for="nameAndLastName" class="form-label">Ім'я та прізвище</label>
     <span class="text-danger">*</span>
-    <input type="text" class="form-control border-2" id="nameInput">
+    <input type="text" class="form-control border-2" id="nameAndLastName" required>
     <div class="invalid-feedback">
         Поле повинно бути заповненим
     </div>
 </div>
 
 <div class="m-3">
-    <a id="companyInfo"></a>
-    <label for="companyInfoTextArea" class="form-label">Інформація про Вашу компанію</label>
+    <a id="servicesAnchor"></a>
+    <label for="countrySelect" class="form-label">Ваша послуга</label>
     <span class="text-danger">*</span>
-    <input class="form-control border-2" id="companyInfoTextArea" placeholder="посилання на сайт або соцмережі">
+    <select class="form-select border-2" multiple size="5" id="servicesSelect">
+        <option value="1">Аніматор</option>
+        <option value="2">Фотограф</option>
+        <option value="3">Відеограф/Оператор</option>
+        <option value="4">Музикант/Вокаліст/Група</option>
+        <option value="5">Ді-Джей</option>
+        <option value="6">Ведучий/Ведуча</option>
+        <option value="7">Декоратор</option>
+        <option value="8">Технічний підрядник</option>
+        <option value="9">Організатор/Координатор</option>
+        <option value="10">Танцор/Танцювальний коллектив</option>
+        <option value="11">Шоу номери</option>
+        <option value="12">Фокусник</option>
+        <option value="13">Аквагрим</option>
+        <option value="14">Кейтерінг</option>
+        <option value="15">Оренда реквізиту/меблів/обладнання</option>
+        <option value="16">Хостес</option>
+        <option value="17">Ростові костюми</option>
+        <option value="18">Трансфер</option>
+        <option value="19">Оренда локації</option>
+        <option value="20">Флорист/Декоратор</option>
+    </select>
+    <div class="invalid-feedback">
+        Оберіть послугу
+    </div>
+</div>
+
+<div class="m-3">
+    <label for="serviceDescriptionTextArea" class="form-label">Опис послуги</label>
+    <textarea class="form-control border-2" id="serviceDescriptionTextArea" rows="2"></textarea>
+</div>
+
+<div class="m-3">
+    <label for="websiteInput" class="form-label">Посилання на сайт / інстаграм</label>
+    <input type="url" class="form-control border-2" id="websiteInput">
+</div>
+
+<div class="m-3">
+    <a id="averageAnchor"></a>
+    <label for="averagePriceInput" class="form-label">Середня вартість послуги</label>
+    <span class="text-danger">*</span>
+    <input type="text" class="form-control border-2" id="averagePriceInput" required>
     <div class="invalid-feedback">
         Поле повинно бути заповненим
     </div>
@@ -86,72 +132,93 @@
 
 <div class="m-3">
     <a id="countryAnchor"></a>
-    <label for="countrySelect" class="form-label">Країни по яких ви працюєте</label>
+    <label for="countrySelect" class="form-label">Країна проживання</label>
     <span class="text-danger">*</span>
-    <select class="form-select border-2" multiple aria-label="Default select example" id="countrySelect">
+    <select class="form-select border-2" aria-label="Default select example" id="countrySelect">
         <option>Оберіть країну</option>
-        <option value="Австрія">Австрія</option>
-        <option value="Албанія">Албанія</option>
-        <option value="Англія">Англія</option>
-        <option value="Бельгія">Бельгія</option>
-        <option value="Болгарія">Болгарія</option>
-        <option value="Боснія і Герцоговина">Боснія і Герцоговина</option>
-        <option value="Греція">Греція</option>
-        <option value="Грузия">Грузия</option>
-        <option value="Данія">Данія</option>
-        <option value="Естонія">Естонія</option>
-<!--        <option value="Єгипет">Єгипет</option>-->
-        <option value="Ірландія">Ірландія</option>
-        <option value="Іспанія">Іспанія</option>
-        <option value="Італія">Італія</option>
-<!--        <option value="Канада">Канада</option>-->
-        <option value="Кіпр">Кіпр</option>
-        <option value="Латвія">Латвія</option>
-        <option value="Литва">Литва</option>
-        <option value="Ліхтенштейн">Ліхтенштейн</option>
-        <option value="Люксембург">Люксембург</option>
-        <option value="Мальта">Мальта</option>
-        <option value="Молдова">Молдова</option>
-        <option value="Нідерланди">Нідерланди</option>
-        <option value="Німеччина">Німеччина</option>
-        <option value="Норвегія">Норвегія</option>
-        <option value="ОАЕ">ОАЕ</option>
-        <option value="Польща">Польща</option>
-        <option value="Португалія">Португалія</option>
-        <option value="Північна Македонія">Північна Македонія</option>
-        <option value="Румунія">Румунія</option>
-        <option value="Сербія">Сербія</option>
-        <option value="Словаччина">Словаччина</option>
-        <option value="Словенія">Словенія</option>
-<!--        <option value="США">США</option>-->
-        <option value="Таїланд">Таїланд</option>
-        <option value="Туреччина">Туреччина</option>
-        <option value="Угорщина">Угорщина</option>
-        <option value="Фінляндія">Фінляндія</option>
-        <option value="Франція">Франція</option>
-        <option value="Хорватія">Хорватія</option>
-        <option value="Чорногорія">Чорногорія</option>
-        <option value="Чехія">Чехія</option>
-        <option value="Швеція">Швеція</option>
-        <option value="Швейцарія">Швейцарія</option>
+        <option value="1">Австрія</option>
+        <option value="2">Бельгія</option>
+        <option value="3">Болгарія</option>
+        <option value="4">Велика Британія</option>
+        <option value="5">Греція</option>
+        <option value="6">Грузія</option>
+        <option value="7">Данія</option>
+        <option value="8">Єгипет</option>
+        <option value="9">Естонія</option>
+        <option value="10">Ізраїль</option>
+        <option value="11">Іспанія</option>
+        <option value="12">Італія</option>
+        <option value="13">Канада</option>
+        <option value="14">Катар</option>
+        <option value="15">Кіпр</option>
+        <option value="16">Латвія</option>
+        <option value="17">Литва</option>
+<!--         <option value="18">Ліхтенштейн</option> -->
+<!--         <option value="19">Люксембург</option> -->
+        <option value="20">Мальта</option>
+<!--         <option value="21">Молдова</option> -->
+<!--         <option value="22">Монако</option> -->
+        <option value="23">Нідерланди</option>
+        <option value="24">Німеччина</option>
+        <option value="25">Норвегія</option>
+        <option value="26">ОАЕ</option>
+        <option value="27">Польща</option>
+        <option value="28">Португалія</option>
+        <option value="29">Румунія</option>
+        <option value="30">Саудівська Аравія</option>
+<!--         <option value="31">Сербія</option> -->
+        <option value="32">Словаччина</option>
+<!--         <option value="33">Словенія</option> -->
+        <option value="34">США</option>
+        <option value="35">Таїланд</option>
+        <option value="36">Туреччина</option>
+        <option value="37">Угорщина</option>
+<!--         <option value="38">Україна</option> -->
+        <option value="39">Фінляндія</option>
+        <option value="40">Франція</option>
+        <option value="41">Хорватія</option>
+        <option value="42">Чехія</option>
+        <option value="43">Чорногорія</option>
+        <option value="44">Швейцарія</option>
+        <option value="45">Швеція</option>
     </select>
     <div class="invalid-feedback">
         Оберіть країну
     </div>
 </div>
 
-<div class="card text-bg-danger m-3" id="validationCard">
+<div class="m-3">
+    <a id="cityAnchor"></a>
+    <label for="cityInput" class="form-label">Місто проживання</label>
+    <span class="text-danger">*</span>
+    <input type="text" class="form-control border-2" id="cityInput">
+    <div class="invalid-feedback">
+        Поле повинно бути заповненим
+    </div>
+</div>
+
+<div class="form-check form-switch m-3 checkbox-xl switch-container">
+    <input class="form-check-input" type="checkbox" role="switch" id="comissionSwitch" style="form-switch-width: 5em">
+    <label class="form-check-label fw-bold" for="comissionSwitch">
+        Я даю згоду на комісію у 10% від суми виконаного замовлення
+    </label>
+</div>
+
+<div class="card text-bg-danger m-3" id="validationCard" hidden>
   <div class="card-header text-center">Обов'язкові поля не заповнені</div>
   <div class="card-body">
-      <p>- Введіть назву транспортної компанії:
-          <a href="#name" class="link-light link-offset-2 link-underline-opacity-100">[перейти]</a>
-      </p>
-      <p>- Введіть інформацію про Вашу компанію:
-          <a href="#companyInfo" class="link-light link-offset-2 link-underline-opacity-100">[перейти]</a>
-      </p>
-      <p>- Оберіть країни по яких ви працюєте:
-          <a href="#cityAnchor" class="link-light link-offset-2 link-underline-opacity-100">[перейти]</a>
-      </p>
+  </div>
+</div>
+
+<div class="card m-3">
+  <div class="card-header">
+    <div class="text-center text-body-secondary">
+        <p>Хочемо звернути увагу, що вашу анкету бачить тільки адміністратор бота, який затверджує кандидатів по запитах.</p>
+        <div class="text-center fw-bold text-body-secondary">
+            <p>На кожен запит адмін погоджує не більше 4 учасників.</p>
+        </div>
+        <p>Якщо вас погодив адміністратор - ви отримаєте контакти замовника і далі пишете замовнику напряму (уточніть все, що вам потрібно по запиту та надішліть інформацію по ваших послугах)</p>
+    </div>
   </div>
 </div>
 
@@ -160,81 +227,159 @@
   let tg = window.Telegram.WebApp
   tg.expand();
 
-  const nameInput = document.getElementById("nameInput");
-  const companyInfoTextArea = document.getElementById("companyInfoTextArea");
+  const cityInput = document.getElementById("cityInput");
+  const nameAndLastInput = document.getElementById("nameAndLastName");
+  const descriptionInput = document.getElementById("serviceDescriptionTextArea");
+  const serviceSelect = document.getElementById("servicesSelect");
+  const websiteInput = document.getElementById("websiteInput");
+  const averagePriceInput = document.getElementById("averagePriceInput");
   const countrySelect = document.getElementById("countrySelect");
+  const comissionSwitch = document.getElementById("comissionSwitch");
   const validationCard = document.getElementById("validationCard");
 
-  let nameValue = '';
-  let companyInfoValue = '';
-  let countryValues = [];
+  let nameAndLastValue = '';
+  let servicesValues = [];
+  let descriptionValue = '';
+  let websiteValue = '';
+  let averagePriceValue = '';
+  let countryValue = '';
+  let cityValue = '';
 
-  let isNameValid = false;
-  let companyInfoValid = false;
+  let isNameAndLastValid = false;
+  let isCityValid = false;
+  let isServicesValid = false;
+  let isAveragePriceValid = false;
   let isCountryValid = false;
+  let isComissionValid = false;
 
-  nameInput.addEventListener("input", event => {
-    isNameValid = nameInput !== null && event.target.value !== "";
-    if (isNameValid) {
-        nameValue = event.target.value;
+  nameAndLastInput.addEventListener("input", event => {
+    isNameAndLastValid = nameAndLastInput !== null && event.target.value !== "";
+    if (isNameAndLastValid) {
+        nameAndLastValue = event.target.value;
     }
-    constructValidationCard();
     isMainButtonActive();
+    constructValidationCard();
   }, false);
-  nameInput.addEventListener("keypress", event => {
+  nameAndLastInput.addEventListener("keypress", event => {
     if (event.which == 13) {
         event.preventDefault();
         serviceSelect.focus();
     }
     constructValidationCard();
   }, false);
-  nameInput.addEventListener("focusin", event => {
-        nameInput.classList.remove("is-invalid");
-        nameInput.classList.remove("is-valid");
+  nameAndLastInput.addEventListener("focusin", event => {
+        nameAndLastInput.classList.remove("is-invalid");
+        nameAndLastInput.classList.remove("is-valid");
   }, false);
-  nameInput.addEventListener("focusout", event => {
+  nameAndLastInput.addEventListener("focusout", event => {
     if (event.target.value !== "") {
-        nameInput.classList.add("is-valid");
-        nameInput.classList.remove("is-invalid");
+        nameAndLastInput.classList.add("is-valid");
+        nameAndLastInput.classList.remove("is-invalid");
     } else {
-        nameInput.classList.add("is-invalid");
-        nameInput.classList.remove("is-valid");
+        nameAndLastInput.classList.add("is-invalid");
+        nameAndLastInput.classList.remove("is-valid");
     }
     constructValidationCard();
   }, false);
 
-  companyInfoTextArea.addEventListener("input", event => {
-    companyInfoValid = companyInfoTextArea !== null && event.target.value !== "";
-    if (companyInfoValid) {
-        companyInfoValue = event.target.value;
-    }
-    constructValidationCard();
-    isMainButtonActive();
+
+  serviceSelect.addEventListener("change", event => {
+      servicesValues = changeServiceArr(event);
+      isServicesValid = !isDefaultServiceWasChosen(event);
+      isMainButtonActive();
+      constructValidationCard();
   }, false);
-  companyInfoTextArea.addEventListener("keypress", event => {
+  serviceSelect.addEventListener("keypress", event => {
     if (event.which == 13) {
         event.preventDefault();
+        descriptionInput.focus();
     }
     constructValidationCard();
   }, false);
-  companyInfoTextArea.addEventListener("focusin", event => {
-        companyInfoTextArea.classList.remove("is-invalid");
-        companyInfoTextArea.classList.remove("is-valid");
+  serviceSelect.addEventListener("focusin", event => {
+        serviceSelect.classList.remove("is-invalid");
+        serviceSelect.classList.remove("is-valid");
   }, false);
-  companyInfoTextArea.addEventListener("focusout", event => {
-    if (event.target.value !== "") {
-        companyInfoTextArea.classList.add("is-valid");
-        companyInfoTextArea.classList.remove("is-invalid");
+  serviceSelect.addEventListener("focusout", event => {
+    if (!isDefaultServiceWasChosen(event)) {
+        serviceSelect.classList.add("is-valid");
+        serviceSelect.classList.remove("is-invalid");
     } else {
-        companyInfoTextArea.classList.add("is-invalid");
-        companyInfoTextArea.classList.remove("is-valid");
+        serviceSelect.classList.add("is-invalid");
+        serviceSelect.classList.remove("is-valid");
+    }
+    constructValidationCard();
+  }, false);
+
+  descriptionInput.addEventListener("input", event => {
+    const isDescriptionValid = descriptionInput !== null && event.target.value !== "";
+    if (isDescriptionValid) {
+        descriptionValue = event.target.value;
+    }
+    isMainButtonActive();
+    constructValidationCard();
+  }, false);
+  descriptionInput.addEventListener("keypress", event => {
+    if (event.which == 13) {
+        event.preventDefault();
+        websiteInput.focus();
+    }
+    constructValidationCard();
+  }, false);
+
+  websiteInput.addEventListener("input", event => {
+    const isWebsiteValid = websiteInput !== null && event.target.value !== "";
+    if (isWebsiteValid) {
+        websiteValue = event.target.value;
+    }
+    isMainButtonActive();
+    constructValidationCard();
+  }, false);
+  websiteInput.addEventListener("keypress", event => {
+    if (event.which == 13) {
+        event.preventDefault();
+        averagePriceInput.focus();
+    }
+    constructValidationCard();
+  }, false);
+
+  averagePriceInput.addEventListener("input", event => {
+    isAveragePriceValid = averagePriceInput !== null && event.target.value !== "";
+    if (isAveragePriceValid) {
+        averagePriceValue = event.target.value;
+    }
+    isMainButtonActive();
+    constructValidationCard();
+  }, false);
+  averagePriceInput.addEventListener("keypress", event => {
+    if (event.which == 13) {
+        event.preventDefault();
+        countrySelect.focus();
+    }
+    constructValidationCard();
+  }, false);
+  averagePriceInput.addEventListener("focusin", event => {
+        averagePriceInput.classList.remove("is-invalid");
+        averagePriceInput.classList.remove("is-valid");
+  }, false);
+  averagePriceInput.addEventListener("focusout", event => {
+    if (event.target.value !== "") {
+        averagePriceInput.classList.add("is-valid");
+        averagePriceInput.classList.remove("is-invalid");
+    } else {
+        averagePriceInput.classList.add("is-invalid");
+        averagePriceInput.classList.remove("is-valid");
     }
     constructValidationCard();
   }, false);
 
   countrySelect.addEventListener("change", event => {
-    countryValues = changeCountryArr(event);
-    isCountryValid = !isDefaultCountryWasChosen(event);
+    isCountryValid = countrySelect !== null && event.target.value !== "Оберіть країну";
+    if (isCountryValid) {
+        countryValue = result = Array.from(event.target.options)
+            .filter((element) => element.selected && element.innerText !== "Оберіть країну")
+            .map((element) => element.innerText)[0];
+    }
     isMainButtonActive();
     constructValidationCard();
   }, false);
@@ -260,18 +405,44 @@
     constructValidationCard();
   }, false);
 
-  function changeCountryArr(event) {
-    return Array.from(event.target.options)
-        .filter((element) => element.selected && element.innerText !== "Оберіть країну")
-        .map((element) => element.innerText);
-  }
+  cityInput.addEventListener("input", event => {
+    isCityValid = cityInput !== null && event.target.value !== "";
+    if (isCityValid) {
+        cityValue = event.target.value;
+    }
+    constructValidationCard();
+    isMainButtonActive();
+  }, false);
+  cityInput.addEventListener("keypress", event => {
+    if (event.which == 13) {
+        event.preventDefault();
+        comissionSwitch.focus();
+    }
+    constructValidationCard();
+  }, false);
+  cityInput.addEventListener("focusin", event => {
+        cityInput.classList.remove("is-invalid");
+        cityInput.classList.remove("is-valid");
+  }, false);
+  cityInput.addEventListener("focusout", event => {
+    if (event.target.value !== "") {
+        cityInput.classList.add("is-valid");
+        cityInput.classList.remove("is-invalid");
+    } else {
+        cityInput.classList.add("is-invalid");
+        cityInput.classList.remove("is-valid");
+    }
+    constructValidationCard();
+  }, false);
 
-  function isDefaultCountryWasChosen(event) {
-    const hasDefaultArr = Array.from(event.target.options)
-        .filter((element) => element.selected && element.innerText == "Оберіть країну")
-        .map((element) => element.innerText);
-    return hasDefaultArr.length == 1;
-  }
+  comissionSwitch.addEventListener("input", event => {
+    isComissionValid = cityInput !== null && event.target.checked;
+    isMainButtonActive();
+    constructValidationCard();
+    if (isComissionValid) {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+  }, false);
 
   function constructValidationCard() {
     if (isShow()) {
@@ -280,14 +451,23 @@
         validationCard.hidden = false;
         let body = document.querySelector("div#validationCard > div.card-body");
         let text = '';
-        if (!isNameValid) {
-            text += `<p>- Введіть назву транспортної компанії: <a href="#countryAnchor" class="link-light link-offset-2 link-underline-opacity-100">[перейти]</a></p>`;
+        if (!isNameAndLastValid) {
+            text += `<p>- Введіть Ім'я та Прізвище: <a href="#nameAndLastNameAnchor" class="link-light link-offset-2 link-underline-opacity-100">[перейти]</a></p>`;
         }
-        if (!companyInfoValid) {
-            text += `<p>- Введіть інформацію про Вашу компанію: <a href="#countryAnchor" class="link-light link-offset-2 link-underline-opacity-100">[перейти]</a></p>`;
+        if (!isServicesValid) {
+            text += `<p>- Оберіть послуги: <a href="#servicesAnchor" class="link-light link-offset-2 link-underline-opacity-100">[перейти]</a></p>`;
+        }
+        if (!isAveragePriceValid) {
+            text += `<p>- Вкажіть середню вартість вашіх послуг: <a href="#averageAnchor" class="link-light link-offset-2 link-underline-opacity-100">[перейти]</a></p>`;
         }
         if (!isCountryValid) {
-            text += `<p>- Оберіть країни по яких ви працюєте: <a href="#cityAnchor" class="link-light link-offset-2 link-underline-opacity-100">[перейти]</a></p>`;
+            text += `<p>- Оберіть країну проживання: <a href="#countryAnchor" class="link-light link-offset-2 link-underline-opacity-100">[перейти]</a></p>`;
+        }
+        if (!isCityValid) {
+            text += `<p>- Введіть місто проживання: <a href="#cityAnchor" class="link-light link-offset-2 link-underline-opacity-100">[перейти]</a></p>`;
+        }
+        if (!isComissionValid) {
+            text += `<p>- Ваша анкета буде розглядатись тільки за умови Вашої згоди на коміссію у 10% від суми виконаного замовлення</p>`;
         }
         body.innerHTML = text;
     }
@@ -301,9 +481,12 @@
   }
 
   function isShow() {
-    return isNameValid &&
-           companyInfoValid &&
-           isCountryValid;
+    return isCityValid &&
+           isNameAndLastValid &&
+           isServicesValid &&
+           isAveragePriceValid &&
+           isCountryValid &&
+           isComissionValid;
   }
 
   function isMainButtonActive() {
@@ -314,13 +497,30 @@
     }
   }
 
-  tg.MainButton.setText('Подати заявку');
+  function changeServiceArr(event) {
+    return Array.from(event.target.options)
+        .filter((element) => element.selected && element.innerText !== "Оберіть послугу")
+        .map((element) => element.innerText);
+  }
+
+  function isDefaultServiceWasChosen(event) {
+    const hasDefaultArr = Array.from(event.target.options)
+        .filter((element) => element.selected && element.innerText == "Оберіть послугу")
+        .map((element) => element.innerText);
+    return hasDefaultArr.length == 1;
+  }
+
+  tg.MainButton.setText('Зареєструватися');
   Telegram.WebApp.onEvent('mainButtonClicked', function() {
       const data = JSON.stringify({
-        nameValue: nameValue,
-        companyInfoValue: companyInfoValue,
-        countryValues: countryValues,
-        type: 7
+        nameAndLastValue: nameAndLastValue,
+        servicesValues: servicesValues,
+        descriptionValue: descriptionValue,
+        websiteValue: websiteValue,
+        averagePriceValue: averagePriceValue,
+        countryValue: countryValue,
+        cityValue: cityValue,
+        type: 3
       });
       tg.sendData(data);
       tg.close();

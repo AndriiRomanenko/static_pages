@@ -141,14 +141,16 @@
             expired = newDate.toLocaleDateString('en-GB');
         }
     }
+    isMainButtonActive();
   }, false);
 
   subTypeGroup.addEventListener("input", event => {
      subType = event.target.id;
+     isMainButtonActive();
   }, false);
 
   function isShow() {
-    return subType !== "none" && expired >= new Date();
+    return subType !== "none" && new Date(expired).getTime() > new Date().getTime();
   }
 
   function isMainButtonActive() {

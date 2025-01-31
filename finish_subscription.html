@@ -21,6 +21,14 @@
     .padding-top{
         padding-top: 1rem;
     }
+
+    .padding-bottom-1{
+        padding-bottom: 1rem;
+    }
+
+    .padding-bottom-3{
+        padding-bottom: 3rem;
+    }
 </style>
 <body style="background-color: #ffffff">
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -89,7 +97,7 @@
                 </label>
             </div>
       </div>
-    <div class="center"
+    <div class="center padding-bottom-1"
          data-month-format="month YYYY"
          data-first-day-of-the-week="2"
          data-day-format="DDD"
@@ -97,6 +105,7 @@
     </div>
 </div>
 
+<div class="padding-bottom-3"></div>
 
 
 
@@ -123,7 +132,8 @@
   subExpGroup.addEventListener("input", event => {
     if (event.target.id === "other") {
         element.hidden = false;
-        expired = new Date().toLocaleDateString('en-GB')
+        expired = new Date().toLocaleDateString('en-GB');
+        window.scrollTo(0, document.body.scrollHeight);
     } else {
         element.hidden = true;
         const date = new Date();

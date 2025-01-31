@@ -105,18 +105,16 @@
   let tg = window.Telegram.WebApp
   tg.expand();
 
-  // Get the element
   let element = document.getElementById("my-calendar");
-  // Create the calendar
   let myCalendar = jsCalendar.new(element);
-  let expired = new Date();
+  let expired = new Date().toLocaleDateString('en-GB');
   let subType = "none";
 
   myCalendar.onDateClick(function(event, date){
      const chosenDate = date.toLocaleDateString('en-GB');
      expired = chosenDate;
-     console.log(expired);
      myCalendar.set(chosenDate);
+     isMainButtonActive();
   });
 
   const subExpGroup = document.getElementById("subExpGroup");
@@ -125,6 +123,7 @@
   subExpGroup.addEventListener("input", event => {
     if (event.target.id === "other") {
         element.hidden = false;
+        expired = new Date().toLocaleDateString('en-GB')
     } else {
         element.hidden = true;
         const date = new Date();
@@ -150,7 +149,12 @@
   }, false);
 
   function isShow() {
-    return subType !== "none" && new Date(expired).getTime() > new Date().getTime();
+    const expRes = new Date();
+    const splitExpired = expired.split("/");
+    expRes.setDate(splitExpired[0]);
+    expRes.setMonth(splitExpired[1]-1);
+    expRes.setFullYear(splitExpired[2]);
+    return subType !== "none" && expRes > new Date();
   }
 
   function isMainButtonActive() {

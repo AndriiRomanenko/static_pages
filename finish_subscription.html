@@ -179,5 +179,16 @@
       tg.close();
   });
 
+  tg.BottomButton.show();
+  tg.BottomButton.setText('Закрити та вийти');
+  tg.BottomButton.color = "#f50000";
+  Telegram.WebApp.onEvent('bottomButtonClicked', function() {
+      const data = JSON.stringify({
+        type: 0
+      });
+      tg.sendData(data);
+      tg.close();
+  });
+
 </script>
 </html>

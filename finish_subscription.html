@@ -32,6 +32,13 @@
     .padding-bottom-3{
         padding-bottom: 3rem;
     }
+
+    .btn-full-width{
+        display: flex;
+        justify-content: center;
+        margin: 5px;
+        width: -webkit-fill-available;
+    }
 </style>
 <body style="background-color: #ffffff">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -40,7 +47,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
             integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
             crossorigin="anonymous"></script>
-    <!-- my calendar -->
+    <button type="button" 
+            id="closeBtn"
+            class="btn btn-danger btn-full-width">Закрити та вийти</button>
     <div class="mt-3 text-center fs-1">Дата та тип підписки</div>
     <div class="container-md">
         <div class="padding-top"></div>
@@ -179,16 +188,14 @@
       tg.close();
   });
 
-  tg.BottomButton.show();
-  tg.BottomButton.setText('Закрити та вийти');
-  tg.BottomButton.color = "#f50000";
-  Telegram.WebApp.onEvent('bottomButtonClicked', function() {
-      const data = JSON.stringify({
+  let closeButton = document.getElementById("closeBtn");
+  closeButton.addEventListener("click", event => {
+     const data = JSON.stringify({
         type: 0
       });
       tg.sendData(data);
       tg.close();
-  });
+  }, false);
 
 </script>
 </html>

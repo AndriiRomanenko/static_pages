@@ -191,7 +191,8 @@
   let closeButton = document.getElementById("closeBtn");
   closeButton.addEventListener("click", event => {
      const data = JSON.stringify({
-        type: 0
+        type: 0,
+        closeType: 'finishSubscription'
       });
       tg.sendData(data);
       tg.close();

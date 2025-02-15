@@ -231,6 +231,7 @@
     exceptSwitch.addEventListener("input", event => {
         if (event.target.checked) {
             exceptInput.hidden = false;
+            exceptInput.focus();
         } else {
             exceptInput.hidden = true;
             items = [];

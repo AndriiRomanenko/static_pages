@@ -194,6 +194,7 @@
 <script type="application/javascript">
     let items = [];
     let hasText = false
+    let mailText = '';
     let subType = "none";
     let messageText = document.getElementById('messageText');
     let subTypeGroup = document.getElementById('subTypeGroup');
@@ -203,6 +204,7 @@
 
     messageText.addEventListener('input', event => {
         hasText = event.target.value.trim() !== '';
+        mailText = event.target.value.trim();
         isMainButtonActive()
     }, false);
 
@@ -213,7 +215,7 @@
 
     exceptInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
-            let val = exceptInput.value;
+            let val = exceptInput.value.trim();
             if (val !== '') {
                 if (items.indexOf(val) >= 0) {
                     exceptInput.classList.add("is-invalid");
@@ -275,7 +277,7 @@
     Telegram.WebApp.onEvent('mainButtonClicked', function () {
         const data = JSON.stringify({
             subscriptionType: subType,
-            text: messageText,
+            text: mailText,
             exceptUsers: items,
             type: 9
         });

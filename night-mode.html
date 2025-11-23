@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Налаштування нічного режиму</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back_ios,mode_off_on"/>
+
+
+</head>
+<style>
+    .head {
+        padding: 10px;
+        background-color: #ffffff;
+        opacity: 100%;
+        display: inline-flex;
+        column-gap: revert-layer;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .free-space {
+        background-color: #f2f2f2;
+        height: 30px;
+    }
+
+    .free-space:first-child {
+        height: 90px;
+    }
+
+    .center-text {
+        text-align: center;
+    }
+
+    hr {
+        color: #d8d8d8;
+        opacity: 100%
+    }
+
+    body {
+        background-color: #ffffff;
+        opacity: 100%
+    }
+
+    .main-container {
+        overflow-y: auto;
+        height: 90vh;
+    }
+
+    .time-container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .back-btn {
+        color: #007AFF;
+        display: inline-flex; /* Use flexbox for alignment */
+        align-items: center;
+        border: none;
+        background-color: #ffffff;
+        width: 35%;
+    }
+
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+
+<div class="head fixed-top">
+    <button type="button" class="btn back-btn" id="backBtn">
+        <span class="material-symbols-outlined">arrow_back_ios</span>
+        <div>
+            Назад
+        </div>
+    </button>
+    <div class="fs-4">Нічний режим</div>
+</div>
+<div class="main-container">
+
+    <div class="free-space"></div>
+
+    <div class="m-3 form-check form-switch fs-5">
+        <input class="form-check-input" type="checkbox" id="allCheckbox">
+        <label class="form-check-label" for="allCheckbox">
+            Для всіх чатів
+        </label>
+    </div>
+    <div class="input-group time-container">
+        <span class="input-group-text">Початок</span>
+        <input type="time" class="form-control center-text" id="fromAll">
+        <span class="input-group-text">Кінець</span>
+        <input type="time" class="form-control center-text" id="toAll">
+    </div>
+
+    <div id="otherChats">
+        <hr>
+
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="locationsCheckbox">
+            <label class="form-check-label" for="locationsCheckbox">
+                LOCATIONS AND EVENTS
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromLocations">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toLocations">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="DECheckbox">
+            <label class="form-check-label" for="DECheckbox">
+                Events in Germany🇺🇦🇩🇪
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromDE">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toDE">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="AUCheckbox">
+            <label class="form-check-label" for="AUCheckbox">
+                Events in Austria and Hungary🇺🇦🇦🇹🇭🇺
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromAU">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toAU">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="BUCheckbox">
+            <label class="form-check-label" for="BUCheckbox">
+                Events in Bulgaria and Romania🇺🇦🇧🇬🇹🇩
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromBU">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toBU">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="CACheckbox">
+            <label class="form-check-label" for="CACheckbox">
+                Events in Canada
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromCA">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toCA">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="CRCheckbox">
+            <label class="form-check-label" for="CRCheckbox">
+                Events in Croatia and Montenegro🇺🇦🇭🇷🇲🇪
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromCR">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toCR">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="CZCheckbox">
+            <label class="form-check-label" for="CZCheckbox">
+                Events in Czech Republic and Slovakia🇺🇦🇨🇿🇸🇰
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromCZ">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toCZ">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="EGCheckbox">
+            <label class="form-check-label" for="EGCheckbox">
+                Events in Egypt🇺🇦🇪🇬
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromEG">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toEG">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="OAECheckbox">
+            <label class="form-check-label" for="OAECheckbox">
+                Events in Emirates, Saudi, Quatar. 🇺🇦🇦🇪🇧🇭🇸🇦
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromOAE">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toOAE">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="FRCheckbox">
+            <label class="form-check-label" for="FRCheckbox">
+                Events in France🇺🇦🇫🇷
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromFR">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toFR">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="GECheckbox">
+            <label class="form-check-label" for="GECheckbox">
+                Events in Georgia🇺🇦🇬🇪
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromGE">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toGE">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="UKCheckbox">
+            <label class="form-check-label" for="UKCheckbox">
+                Events in Great Britain🇺🇦🇬🇧
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromUK">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toUK">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="GRCheckbox">
+            <label class="form-check-label" for="GRCheckbox">
+                Events in Greece and Cyprus🇺🇦🇬🇷🇨🇾
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromGR">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toGR">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="IRCheckbox">
+            <label class="form-check-label" for="IRCheckbox">
+                Events in Ireland🇮🇪🇺🇦
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromIR">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toIR">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="ISCheckbox">
+            <label class="form-check-label" for="ISCheckbox">
+                Events in Israel🇺🇦🇮🇱
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromIS">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toIS">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="ITCheckbox">
+            <label class="form-check-label" for="ITCheckbox">
+                Events in Italy🇺🇦🇮🇹
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromIT">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toIT">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="LACheckbox">
+            <label class="form-check-label" for="LACheckbox">
+                Events in Latvia, Lithuania, Estonia🇺🇦🇱🇻🇱🇹🇪🇪
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromLA">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toLA">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="MACheckbox">
+            <label class="form-check-label" for="MACheckbox">
+                Events in Malta 🇺🇦🇲🇹
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromMA">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toMA">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="NECheckbox">
+            <label class="form-check-label" for="NECheckbox">
+                Events in Netherlands, Belgium, Denmark🇺🇦🇳🇱🇧🇪🇩🇰
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromNE">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toNE">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="PLCheckbox">
+            <label class="form-check-label" for="PLCheckbox">
+                Events in Poland🇺🇦🇵🇱
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromPL">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toPL">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="SPCheckbox">
+            <label class="form-check-label" for="SPCheckbox">
+                Events in Spain and Portugal🇺🇦🇪🇦🇵🇹
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromSP">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toSP">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="SWCheckbox">
+            <label class="form-check-label" for="SWCheckbox">
+                Events in Sweden, Finland, Norway🇺🇦🇸🇪🇫🇮🇧🇻
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromSW">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toSW">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="SWISCheckbox">
+            <label class="form-check-label" for="SWISCheckbox">
+                Events in Switzerland🇺🇦🇨🇭
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromSWIS">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toSWIS">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="THCheckbox">
+            <label class="form-check-label" for="THCheckbox">
+                Events in Thailand
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromTH">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toTH">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="TUCheckbox">
+            <label class="form-check-label" for="TUCheckbox">
+                Events in Turkey🇺🇦🇹🇷
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromTU">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toTU">
+        </div>
+        <hr>
+        <div class="m-3 form-check form-switch fs-5">
+            <input class="form-check-input" type="checkbox" id="USACheckbox">
+            <label class="form-check-label" for="USACheckbox">
+                Events in USA
+            </label>
+        </div>
+        <div class="input-group time-container">
+            <span class="input-group-text">Початок</span>
+            <input type="time" class="form-control center-text" id="fromUSA">
+            <span class="input-group-text">Кінець</span>
+            <input type="time" class="form-control center-text" id="toUSA">
+        </div>
+
+        <div class="free-space"></div>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript">
+    let tg = window.Telegram.WebApp
+    tg.expand();
+    tg.MainButton.show();
+
+    const FROM_TIME = "23:00";
+    const TO_TIME = "08:00";
+
+    // Toast init
+    const allowSendMessagesBtn = document.getElementById('allowSendMessagesBtn')
+    const toastEl = document.getElementById('liveToast')
+
+    if (allowSendMessagesBtn) {
+        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastEl)
+        allowSendMessagesBtn.addEventListener('click', () => {
+            toastBootstrap.show()
+        })
+    }
+
+    // checkboxes
+    const allCheckbox = document.getElementById('allCheckbox');
+    const locationsCheckbox = document.getElementById('locationsCheckbox');
+    const DECheckbox = document.getElementById('DECheckbox');
+    const AUCheckbox = document.getElementById('AUCheckbox');
+    const BUCheckbox = document.getElementById('BUCheckbox');
+    const CACheckbox = document.getElementById('CACheckbox');
+    const CRCheckbox = document.getElementById('CRCheckbox');
+    const CZCheckbox = document.getElementById('CZCheckbox');
+    const EGCheckbox = document.getElementById('EGCheckbox');
+    const OAECheckbox = document.getElementById('OAECheckbox');
+    const FRCheckbox = document.getElementById('FRCheckbox');
+    const GECheckbox = document.getElementById('GECheckbox');
+    const UKCheckbox = document.getElementById('UKCheckbox');
+    const GRCheckbox = document.getElementById('GRCheckbox');
+    const IRCheckbox = document.getElementById('IRCheckbox');
+    const ISCheckbox = document.getElementById('ISCheckbox');
+    const ITCheckbox = document.getElementById('ITCheckbox');
+    const LACheckbox = document.getElementById('LACheckbox');
+    const MACheckbox = document.getElementById('MACheckbox');
+    const NECheckbox = document.getElementById('NECheckbox');
+    const PLCheckbox = document.getElementById('PLCheckbox');
+    const SPCheckbox = document.getElementById('SPCheckbox');
+    const SWCheckbox = document.getElementById('SWCheckbox');
+    const SWISCheckbox = document.getElementById('SWISCheckbox');
+    const THCheckbox = document.getElementById('THCheckbox');
+    const TUCheckbox = document.getElementById('TUCheckbox');
+    const USACheckbox = document.getElementById('USACheckbox');
+
+    allCheckbox.checked = true;
+    locationsCheckbox.checked = true;
+    DECheckbox.checked = true;
+    AUCheckbox.checked = true;
+    BUCheckbox.checked = true;
+    CACheckbox.checked = true;
+    CRCheckbox.checked = true;
+    CZCheckbox.checked = true;
+    EGCheckbox.checked = true;
+    OAECheckbox.checked = true;
+    FRCheckbox.checked = true;
+    GECheckbox.checked = true;
+    UKCheckbox.checked = true;
+    GRCheckbox.checked = true;
+    IRCheckbox.checked = true;
+    ISCheckbox.checked = true;
+    ITCheckbox.checked = true;
+    LACheckbox.checked = true;
+    MACheckbox.checked = true;
+    NECheckbox.checked = true;
+    PLCheckbox.checked = true;
+    SPCheckbox.checked = true;
+    SWCheckbox.checked = true;
+    SWISCheckbox.checked = true;
+    THCheckbox.checked = true;
+    TUCheckbox.checked = true;
+    USACheckbox.checked = true;
+
+    const otherChats = document.getElementById('otherChats');
+    otherChats.hidden = true;
+
+    allCheckbox.addEventListener("input", event => {
+        otherChats.hidden = event.target.checked;
+    }, false);
+
+    // from time
+    const fromAll = document.getElementById('fromAll');
+    const fromLocations = document.getElementById('fromLocations');
+    const fromDE = document.getElementById('fromDE');
+    const fromAU = document.getElementById('fromAU');
+    const fromBU = document.getElementById('fromBU');
+    const fromCA = document.getElementById('fromCA');
+    const fromCR = document.getElementById('fromCR');
+    const fromCZ = document.getElementById('fromCZ');
+    const fromEG = document.getElementById('fromEG');
+    const fromOAE = document.getElementById('fromOAE');
+    const fromFR = document.getElementById('fromFR');
+    const fromGE = document.getElementById('fromGE');
+    const fromUK = document.getElementById('fromUK');
+    const fromGR = document.getElementById('fromGR');
+    const fromIR = document.getElementById('fromIR');
+    const fromIS = document.getElementById('fromIS');
+    const fromIT = document.getElementById('fromIT');
+    const fromLA = document.getElementById('fromLA');
+    const fromMA = document.getElementById('fromMA');
+    const fromNE = document.getElementById('fromNE');
+    const fromPL = document.getElementById('fromPL');
+    const fromSP = document.getElementById('fromSP');
+    const fromSW = document.getElementById('fromSW');
+    const fromSWIS = document.getElementById('fromSWIS');
+    const fromTH = document.getElementById('fromTH');
+    const fromTU = document.getElementById('fromTU');
+    const fromUSA = document.getElementById('fromUSA');
+
+    // to time
+    const toAll = document.getElementById('toAll');
+    const toLocations = document.getElementById('toLocations');
+    const toDE = document.getElementById('toDE');
+    const toAU = document.getElementById('toAU');
+    const toBU = document.getElementById('toBU');
+    const toCA = document.getElementById('toCA');
+    const toCR = document.getElementById('toCR');
+    const toCZ = document.getElementById('toCZ');
+    const toEG = document.getElementById('toEG');
+    const toOAE = document.getElementById('toOAE');
+    const toFR = document.getElementById('toFR');
+    const toGE = document.getElementById('toGE');
+    const toUK = document.getElementById('toUK');
+    const toGR = document.getElementById('toGR');
+    const toIR = document.getElementById('toIR');
+    const toIS = document.getElementById('toIS');
+    const toIT = document.getElementById('toIT');
+    const toLA = document.getElementById('toLA');
+    const toMA = document.getElementById('toMA');
+    const toNE = document.getElementById('toNE');
+    const toPL = document.getElementById('toPL');
+    const toSP = document.getElementById('toSP');
+    const toSW = document.getElementById('toSW');
+    const toSWIS = document.getElementById('toSWIS');
+    const toTH = document.getElementById('toTH');
+    const toTU = document.getElementById('toTU');
+    const toUSA = document.getElementById('toUSA');
+
+    // checkboxes
+    fromAll.value = FROM_TIME;
+    fromLocations.value = FROM_TIME;
+    fromDE.value = FROM_TIME;
+    fromAU.value = FROM_TIME;
+    fromBU.value = FROM_TIME;
+    fromCA.value = FROM_TIME;
+    fromCR.value = FROM_TIME;
+    fromCZ.value = FROM_TIME;
+    fromEG.value = FROM_TIME;
+    fromOAE.value = FROM_TIME;
+    fromFR.value = FROM_TIME;
+    fromGE.value = FROM_TIME;
+    fromUK.value = FROM_TIME;
+    fromGR.value = FROM_TIME;
+    fromIR.value = FROM_TIME;
+    fromIS.value = FROM_TIME;
+    fromIT.value = FROM_TIME;
+    fromLA.value = FROM_TIME;
+    fromMA.value = FROM_TIME;
+    fromNE.value = FROM_TIME;
+    fromPL.value = FROM_TIME;
+    fromSP.value = FROM_TIME;
+    fromSW.value = FROM_TIME;
+    fromSWIS.value = FROM_TIME;
+    fromTH.value = FROM_TIME;
+    fromTU.value = FROM_TIME;
+    fromUSA.value = FROM_TIME;
+
+    toAll.value = TO_TIME;
+    toLocations.value = TO_TIME;
+    toDE.value = TO_TIME;
+    toAU.value = TO_TIME;
+    toBU.value = TO_TIME;
+    toCA.value = TO_TIME;
+    toCR.value = TO_TIME;
+    toCZ.value = TO_TIME;
+    toEG.value = TO_TIME;
+    toOAE.value = TO_TIME;
+    toFR.value = TO_TIME;
+    toGE.value = TO_TIME;
+    toUK.value = TO_TIME;
+    toGR.value = TO_TIME;
+    toIR.value = TO_TIME;
+    toIS.value = TO_TIME;
+    toIT.value = TO_TIME;
+    toLA.value = TO_TIME;
+    toMA.value = TO_TIME;
+    toNE.value = TO_TIME;
+    toPL.value = TO_TIME;
+    toSP.value = TO_TIME;
+    toSW.value = TO_TIME;
+    toSWIS.value = TO_TIME;
+    toTH.value = TO_TIME;
+    toTU.value = TO_TIME;
+    toUSA.value = TO_TIME;
+
+    tg.MainButton.setText('Зберегти');
+    Telegram.WebApp.onEvent('mainButtonClicked', function () {
+        const data = JSON.stringify({
+            type: 2,
+            nightModeConfig: {
+                all: {
+                    active: allCheckbox.checked,
+                    from: fromAll.value,
+                    to: toAll.value
+                },
+                locations: {
+                    active: locationsCheckbox.checked,
+                    from: fromLocations.value,
+                    to: toLocations.value
+                },
+                DE: {
+                    active: DECheckbox.checked,
+                    from: fromDE.value,
+                    to: toDE.value
+                },
+                AU: {
+                    active: AUCheckbox.checked,
+                    from: fromAU.value,
+                    to: toAU.value
+                },
+                BU: {
+                    active: BUCheckbox.checked,
+                    from: fromBU.value,
+                    to: toBU.value
+                },
+                CA: {
+                    active: CACheckbox.checked,
+                    from: fromCA.value,
+                    to: toCA.value
+                },
+                CR: {
+                    active: CRCheckbox.checked,
+                    from: fromCR.value,
+                    to: toCR.value
+                },
+                CZ: {
+                    active: CZCheckbox.checked,
+                    from: fromCZ.value,
+                    to: toCZ.value
+                },
+                EG: {
+                    active: EGCheckbox.checked,
+                    from: fromEG.value,
+                    to: toEG.value
+                },
+                OAE: {
+                    active: OAECheckbox.checked,
+                    from: fromOAE.value,
+                    to: toOAE.value
+                },
+                FR: {
+                    active: FRCheckbox.checked,
+                    from: fromFR.value,
+                    to: toFR.value
+                },
+                GE: {
+                    active: GECheckbox.checked,
+                    from: fromGE.value,
+                    to: toGE.value
+                },
+                UK: {
+                    active: UKCheckbox.checked,
+                    from: fromUK.value,
+                    to: toUK.value
+                },
+                GR: {
+                    active: GRCheckbox.checked,
+                    from: fromGR.value,
+                    to: toGR.value
+                },
+                IR: {
+                    active: IRCheckbox.checked,
+                    from: fromIR.value,
+                    to: toIR.value
+                },
+                IS: {
+                    active: ISCheckbox.checked,
+                    from: fromIS.value,
+                    to: toIS.value
+                },
+                IT: {
+                    active: ITCheckbox.checked,
+                    from: fromIT.value,
+                    to: toIT.value
+                },
+                LA: {
+                    active: LACheckbox.checked,
+                    from: fromLA.value,
+                    to: toLA.value
+                },
+                MA: {
+                    active: MACheckbox.checked,
+                    from: fromMA.value,
+                    to: toMA.value
+                },
+                NE: {
+                    active: NECheckbox.checked,
+                    from: fromNE.value,
+                    to: toNE.value
+                },
+                PL: {
+                    active: PLCheckbox.checked,
+                    from: fromPL.value,
+                    to: toPL.value
+                },
+                SP: {
+                    active: SPCheckbox.checked,
+                    from: fromSP.value,
+                    to: toSP.value
+                },
+                SW: {
+                    active: SWCheckbox.checked,
+                    from: fromSW.value,
+                    to: toSW.value
+                },
+                SWIS: {
+                    active: SWISCheckbox.checked,
+                    from: fromSWIS.value,
+                    to: toSWIS.value
+                },
+                TH: {
+                    active: THCheckbox.checked,
+                    from: fromTH.value,
+                    to: toTH.value
+                },
+                TU: {
+                    active: TUCheckbox.checked,
+                    from: fromTU.value,
+                    to: toTU.value
+                },
+                USA: {
+                    active: USACheckbox.checked,
+                    from: fromUSA.value,
+                    to: toUSA.value
+                }
+            }
+        });
+        tg.sendData(data);
+        tg.close();
+    });
+
+    let closeButton = document.getElementById("backBtn");
+    closeButton.addEventListener("click", event => {
+        const data = JSON.stringify({
+            type: 0,
+            closeType: 'nightModeConfig'
+        });
+        tg.sendData(data);
+        tg.close();
+    }, false);
+</script>
+</html>

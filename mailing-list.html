@@ -90,7 +90,7 @@
         color: red;
     }
 
-    .checkbox-lg .form-check-input{
+    .checkbox-lg .form-check-input {
         top: .8rem;
         scale: 1.4;
         margin-right: 0.7rem;
@@ -130,7 +130,8 @@
 
 <button type="button"
         id="closeBtn"
-        class="btn btn-danger btn-full-width">Закрити та вийти</button>
+        class="btn btn-danger btn-full-width">Закрити та вийти
+</button>
 <div class="mt-3 text-center fs-1">Розсилка</div>
 <div class="container-md">
     <div class="padding-top"></div>
@@ -147,43 +148,119 @@
         <div class="card-header">
             <div class="text-center fs-5">Отримувачі</div>
         </div>
-        <div class="card-body" id="subTypeGroup">
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="subType" id="allExceptPaidSubs">
-                <label class="form-check-label fs-6" for="allSubs">
-                    📢 Усі підписники ОКРІМ ПЛАТНИХ
-                </label>
+        <div class="card-body">
+            <select class="form-select" aria-label="Default select example" id="subTypeGroup">
+                <option selected value="allExceptPaidSubs">📢 Усі підписники ОКРІМ ПЛАТНИХ</option>
+                <option value="allSubs">📝 Усі підписники</option>
+                <option value="testSubs">⏲️ Тестові підписники</option>
+                <option value="paidSubs">💶 Платні підписники</option>
+                <option value="expiredSubs">⛔️ Із закінченою підпискою</option>
+            </select>
+        </div>
+    </div>
+    <div class="padding-top"></div>
+    <div>
+        <div class="card m-2">
+            <div class="card-header">
+                <div class="text-center fs-5">Послуга</div>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="subType" id="allSubs">
-                <label class="form-check-label fs-6" for="allSubs">
-                    📝 Усі підписники
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="subType" id="testSubs">
-                <label class="form-check-label fs-6" for="testSubs">
-                    ⏲️ Тестові підписники
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="subType" id="paidSubs">
-                <label class="form-check-label fs-6" for="paidSubs">
-                    💶 Платні підписники
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="subType" id="expiredSubs">
-                <label class="form-check-label fs-6" for="expiredSubs">
-                    ⛔️ Із закінченою підпискою
-                </label>
+            <div class="card-body">
+                <select class="form-select" aria-label="Default select example" id="subjectsGroup">
+                    <option selected value="allSubjects">Усі послуги</option>
+                    <option value="passAndPost">Пасажирські перевезення та посилки</option>
+                    <option value="pass">Пасажирські перевезення</option>
+                    <option value="cargo">Вантажні перевезення по країні</option>
+                    <option value="indiv">Індивідуальний трансфер</option>
+                    <option value="animals">Перевезення тварин</option>
+                    <option value="photo">Фотограф</option>
+                    <option value="renovation">Збирання меблів</option>
+                    <option value="renovationAndRepair">Збирання меблів і ремонт квартир</option>
+                    <option value="brows">Брови / Вії</option>
+                    <option value="manicure">Манікюр / Педікюр</option>
+                    <option value="perukar">Перукар</option>
+                    <option value="hairMaster">Майстер з волосся</option>
+                    <option value="makeup">Макіяж / Візаж</option>
+                    <option value="cosmo">Косметологічні послуги</option>
+                    <option value="permanent">Перманентний макіяж</option>
+                    <option value="massage">Масаж</option>
+                    <option value="cleaning">Клінінгові послуги</option>
+                    <option value="enCourses">Курси англійської мови онлайн</option>
+                    <option value="bulgCourses">Курси болгарської мови онлайн</option>
+                    <option value="spainCourses">Курси іспанської мови онлайн</option>
+                    <option value="itCourses">Курси італійської мови онлайн</option>
+                    <option value="lithuanianCourses">Курси литовської мови онлайн</option>
+                    <option value="neCourses">Курси нідерландської мови онлайн</option>
+                    <option value="deCourses">Курси німецької мови онлайн</option>
+                    <option value="portugalCourses">Курси португальскої мови онлайн</option>
+                    <option value="polandCourses">Курси польської мови онлайн</option>
+                    <option value="romaniaCourses">Курси румунської мови онлайн</option>
+                    <option value="slovakiaCourses">Курси словацької мови онлайн</option>
+                    <option value="czechCourses">Курси чеської мови онлайн</option>
+                    <option value="tuCourses">Курси турецької мови онлайн</option>
+                    <option value="uaCourses">Курси української мови онлайн</option>
+                    <option value="frCourses">Курси французької мови онлайн</option>
+                    <option value="tattoo">Тату / Пірсинг</option>
+                </select>
             </div>
         </div>
     </div>
     <div class="padding-top"></div>
     <div>
+        <div class="card m-2">
+            <div class="card-header">
+                <div class="text-center fs-5">Країна</div>
+            </div>
+            <div class="card-body">
+                <select class="form-select" aria-label="Default select example" id="countryGroup">
+                    <option selected value="allCountries">Усі країни</option>
+                    <option value="de">Німеччина</option>
+                    <option value="au">Австрія</option>
+                    <option value="alb">Албанія</option>
+                    <option value="belg">Бельгія</option>
+                    <option value="bulg">Болгарія</option>
+                    <option value="bosn">Боснія і Герцоговина</option>
+                    <option value="brit">Британія</option>
+                    <option value="greece">Греція</option>
+                    <option value="georg">Грузія</option>
+                    <option value="denm">Данія</option>
+                    <option value="est">Естонія</option>
+                    <option value="egypt">Єгипет</option>
+                    <option value="irl">Ірландія</option>
+                    <option value="spain">Іспанія</option>
+                    <option value="it">Італія</option>
+                    <option value="cyprus">Кіпр</option>
+                    <option value="latv">Латвія</option>
+                    <option value="lith">Литва</option>
+                    <option value="licht">Ліхтенштейн</option>
+                    <option value="lux">Люксембург</option>
+                    <option value="malta">Мальта</option>
+                    <option value="moldova">Молдова</option>
+                    <option value="neth">Нідерланди</option>
+                    <option value="norw">Норвегія</option>
+                    <option value="oae">ОАЕ</option>
+                    <option value="maked">Північна Македонія</option>
+                    <option value="pol">Польща</option>
+                    <option value="port">Португалія</option>
+                    <option value="rom">Румунія</option>
+                    <option value="serb">Сербія</option>
+                    <option value="slovak">Словаччина</option>
+                    <option value="sloven">Словенія</option>
+                    <option value="thai">Таїланд</option>
+                    <option value="turk">Туреччина</option>
+                    <option value="hung">Угорщина</option>
+                    <option value="finl">Фінляндія</option>
+                    <option value="fran">Франція</option>
+                    <option value="croat">Хорватія</option>
+                    <option value="czech">Чехія</option>
+                    <option value="monten">Чорногорія</option>
+                    <option value="swed">Швейцарія</option>
+                    <option value="swis">Швеція</option>
+                </select>
+            </div>
+        </div>
         <div class="form-check form-switch checkbox-xl switch-container">
-            <input class="form-check-input" type="checkbox" role="switch" id="exceptSwitch" style="form-switch-width: 5em">
+            <input class="form-check-input" type="checkbox" role="switch" id="exceptSwitch"
+                   style="form-switch-width: 5em">
             <label class="form-check-label fs-4" for="exceptSwitch">Додати виключення</label>
         </div>
         <div id="subExpGroup">
@@ -207,9 +284,13 @@
     let items = [];
     let hasText = false
     let mailText = '';
-    let subType = "none";
+    let subType = "allExceptPaidSubs";
+    let subject = "allSubjects";
+    let country = "allCountries";
     let messageText = document.getElementById('messageText');
     let subTypeGroup = document.getElementById('subTypeGroup');
+    let subjectsGroup = document.getElementById('subjectsGroup');
+    let countryGroup = document.getElementById('countryGroup');
     let exceptSwitch = document.getElementById('exceptSwitch');
     let exceptInput = document.getElementById('exceptInput');
     let list = document.getElementById('list');
@@ -220,12 +301,22 @@
         isMainButtonActive()
     }, false);
 
-    subTypeGroup.addEventListener("input", event => {
-        subType = event.target.id;
+    subTypeGroup.addEventListener("change", event => {
+        subType = event.target.value;
         isMainButtonActive();
     }, false);
 
-    exceptInput.addEventListener('keypress', function(e) {
+    subjectsGroup.addEventListener("change", event => {
+        subject = event.target.value;
+        isMainButtonActive();
+    }, false);
+
+    countryGroup.addEventListener("change", event => {
+        country = event.target.value;
+        isMainButtonActive();
+    }, false);
+
+    exceptInput.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
             let val = exceptInput.value.trim();
             if (val !== '') {
@@ -236,7 +327,7 @@
                     items.push(val);
                     render();
                     exceptInput.value = '';
-                    list.scrollIntoView({ behavior: 'smooth', block: 'end' })
+                    list.scrollIntoView({behavior: 'smooth', block: 'end'})
                 }
             }
         }
@@ -290,6 +381,8 @@
     Telegram.WebApp.onEvent('mainButtonClicked', function () {
         const data = JSON.stringify({
             subscriptionType: subType,
+            subject: subject,
+            country: country,
             text: mailText,
             exceptUsers: items,
             type: 9

@@ -155,11 +155,22 @@
                 <option value="testSubs">⏲️ Тестові підписники</option>
                 <option value="paidSubs">💶 Платні підписники</option>
                 <option value="expiredSubs">⛔️ Із закінченою підпискою</option>
+                <option value="predefinedUsers">🔍 Окремі користувачі</option>
             </select>
         </div>
     </div>
+    <div id="predefinedUsersGroup" class="container padding-top" hidden>
+        <input type="text"
+               id="predefinedInput"
+               class="form-control"
+               placeholder="Введіть Username або CHAT ID">
+        <div id="predefinedInputValidation" class="invalid-feedback">
+            CHAT ID або Username вже був введений
+        </div>
+        <ul id="usersList"></ul>
+    </div>
     <div class="padding-top"></div>
-    <div>
+    <div id="subjectsBlock">
         <div class="card m-2">
             <div class="card-header">
                 <div class="text-center fs-5">Послуга</div>
@@ -184,7 +195,6 @@
                     <option value="Перманентний макіяж">Перманентний макіяж</option>
                     <option value="Масаж">Масаж</option>
                     <option value="Клінінгові послуги">Клінінгові послуги</option>
-                    <option value="Курси мов">Курси мов</option>
                     <option value="Курси англійської мови онлайн">Курси англійської мови онлайн</option>
                     <option value="Курси болгарської мови онлайн">Курси болгарської мови онлайн</option>
                     <option value="Курси іспанської мови онлайн">Курси іспанської мови онлайн</option>
@@ -206,7 +216,7 @@
         </div>
     </div>
     <div class="padding-top"></div>
-    <div>
+    <div id="countryBlock">
         <div class="card m-2">
             <div class="card-header">
                 <div class="text-center fs-5">Країна</div>
@@ -283,6 +293,7 @@
 </body>
 <script type="application/javascript">
     let items = [];
+    let predefinedUsers = [];
     let hasText = false
     let mailText = '';
     let subType = "allExceptPaidSubs";
@@ -294,7 +305,12 @@
     let countryGroup = document.getElementById('countryGroup');
     let exceptSwitch = document.getElementById('exceptSwitch');
     let exceptInput = document.getElementById('exceptInput');
+    let predefinedUsersGroup = document.getElementById('predefinedUsersGroup');
+    let predefinedInput = document.getElementById('predefinedInput');
+    let subjectsBlock = document.getElementById('subjectsBlock');
+    let countryBlock = document.getElementById('countryBlock');
     let list = document.getElementById('list');
+    let usersList = document.getElementById('usersList');
 
     messageText.addEventListener('input', event => {
         hasText = event.target.value.trim() !== '';
@@ -305,6 +321,16 @@
     subTypeGroup.addEventListener("change", event => {
         subType = event.target.value;
         isMainButtonActive();
+        if (subType === 'predefinedUsers') {
+            predefinedUsersGroup.hidden = false;
+            predefinedInput.focus();
+            subjectsBlock.hidden = true;
+            countryBlock.hidden = true;
+        } else {
+            predefinedUsersGroup.hidden = true;
+            subjectsBlock.hidden = false;
+            countryBlock.hidden = false;
+        }
     }, false);
 
     subjectsGroup.addEventListener("change", event => {
@@ -334,6 +360,23 @@
         }
     });
 
+    predefinedInput.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            let val = predefinedInput.value.trim();
+            if (val !== '') {
+                if (predefinedUsers.indexOf(val) >= 0) {
+                    predefinedInput.classList.add("is-invalid");
+                } else {
+                    predefinedInput.classList.remove("is-invalid");
+                    predefinedUsers.push(val);
+                    render2();
+                    predefinedInput.value = '';
+                    usersList.scrollIntoView({behavior: 'smooth', block: 'end'})
+                }
+            }
+        }
+    });
+
     exceptSwitch.addEventListener("input", event => {
         if (event.target.checked) {
             exceptInput.hidden = false;
@@ -352,9 +395,21 @@
         });
     }
 
+    function render2() {
+        usersList.innerHTML = '';
+        predefinedUsers.map((item, index) => {
+            usersList.innerHTML += `<li><span>${item}</span><a href="javascript: remove2(${index})">✕</a></li>`;
+        });
+    }
+
     function remove(i) {
         items = items.filter(item => items.indexOf(item) != i);
         render();
+    }
+
+    function remove2(i) {
+        predefinedUsers = predefinedUsers.filter(item => predefinedUsers.indexOf(item) != i);
+        render2();
     }
 
     let tg = window.Telegram.WebApp
@@ -386,6 +441,7 @@
             country: country,
             text: mailText,
             exceptUsers: items,
+            predefinedUsers: predefinedUsers,
             type: 9
         });
         tg.sendData(data);

@@ -98,6 +98,7 @@
             padding: 7px;
             border-radius: 6px;
             border: 1px solid #ccc;
+            font-size: 14px;
         }
 
         .hidden {
@@ -275,6 +276,9 @@
 
     let items = JSON.parse(localStorage.getItem("items") || "[]")
     let editIndex = null
+
+    let tg = window.Telegram.WebApp
+    tg.expand();
 
     function render() {
 

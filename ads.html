@@ -87,84 +87,101 @@
         }
 
         .input-wrapper {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
+            display:grid;
+            grid-template-columns: 150px 1fr;
+            align-items:center;
+            gap:10px;
+        }
+        .input-wrapper label {
+            font-size: 16px;
+            color: #555;
         }
 
         input, select {
-            width: 75%;
-            padding: 7px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            font-size: 14px;
+            width:100%;
+            padding:7px;
+            border-radius:6px;
+            border:1px solid #ccc;
+            font-size:14px;
+            box-sizing:border-box;
         }
 
         .hidden {
             display: none;
         }
 
-        /* карточки */
+        .card{
+            background:white;
+            border-radius:10px;
+            padding:14px 16px;
+            margin-top:10px;
 
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 16px;
-            margin-top: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
+            border:1px solid #e6e6e6;
         }
 
-        .card-info {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        .card-info{
+            display:flex;
+            flex-direction:column;
+            gap:6px;
+            width:100%;
         }
 
-        .type {
-            font-size: 18px;
-            font-weight: 600;
-            background: #eef2ff;
-            padding: 10px 10px;
-            border-radius: 6px;
-            width: fit-content;
+        .type{
+            font-size:18px;
+            font-weight:600;
+            background:#eef2ff;
+            padding:10px;
+            border-radius:6px;
+            width:100%;
+            box-sizing:border-box;
         }
 
-        .datetime {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 15px;
-            color: #555;
+        .datetime{
+            display:flex;
+            gap:14px;
+            font-size:14px;
+            color:#666;
         }
 
-        .datetime span {
-            display: flex;
-            align-items: center;
-            gap: 4px;
+        .datetime span{
+            display:flex;
+            align-items:center;
+            gap:4px;
         }
 
-        .card-buttons {
-            display: flex;
-            gap: 6px;
+        .stats{
+            display:flex;
+            gap:14px;
+            font-size:13px;
+            color:#888;
         }
 
-        .edit {
-            background: #facc15;
+        .stats span{
+            display:flex;
+            align-items:center;
+            gap:4px;
         }
 
-        .delete {
-            background: #ef4444;
-            color: white;
+        .card-buttons{
+            display:flex;
+            gap:4px;
         }
 
-        .material-icons {
-            font-size: 22px;
+        .edit{
+            background:#facc15;
+        }
+
+        .delete{
+            background:#ef4444;
+            color:white;
+        }
+
+        .material-icons{
+            font-size:20px;
         }
 
         /* mobile */
@@ -200,7 +217,6 @@
     <h1>Розсилка реклами</h1>
 
     <button class="primary" id="addBtn">
-<!--        <span class="material-icons">add</span>-->
         Додати
     </button>
 
@@ -209,7 +225,7 @@
         <form id="dataForm">
 
             <div class="input-wrapper">
-                <label>Група</label>
+                <label for="type">Група</label>
                 <select id="type">
                     <option value="🇩🇪 Німеччина">🇩🇪 Німеччина</option>
                     <option value="🇦🇹🇭🇺 Австрія та Угорщина">🇦🇹🇭🇺 Австрія та Угорщина</option>
@@ -236,17 +252,33 @@
                     <option value="🇨🇿🇸🇰 Чехія та Словакія">🇨🇿🇸🇰 Чехія та Словакія</option>
                     <option value="🇨🇭 Швейцарія">🇨🇭 Швейцарія</option>
                     <option value="🇸🇪🇫🇮🇳🇴 Швеція, Фінляндія, Норвегія">🇸🇪🇫🇮🇳🇴 Швеція, Фінляндія, Норвегія</option>
+                    <option value="LOCATIONS AND EVENTS">LOCATIONS AND EVENTS</option>
                 </select>
             </div>
 
             <div class="input-wrapper">
-                <label>Дата</label>
+                <label for="date">Початкова дата</label>
                 <input type="date" id="date" required>
             </div>
 
             <div class="input-wrapper">
-                <label>Час</label>
-                <input type="time" id="time" required>
+                <label for="partDate">Частина дня</label>
+                <select id="partDate" required>
+                    <option value="Ранок">Ранок</option>
+                    <option value="День">День</option>
+                    <option value="Вечір">Вечір</option>
+                    <option value="Протягом дня">Протягом дня</option>
+                </select>
+            </div>
+
+            <div class="input-wrapper">
+                <label for="postNumber">Кількість постів</label>
+                <input type="number" id="postNumber" required>
+            </div>
+
+            <div class="input-wrapper">
+                <label for="repeatAfter">Повтор через (днів)</label>
+                <input type="number" id="repeatAfter" required>
             </div>
 
             <button class="primary" type="submit">
@@ -306,7 +338,21 @@ ${item.date}
 
 <span>
 <span class="material-icons">schedule</span>
-${item.time}
+${item.partDate}
+</span>
+
+</div>
+
+<div class="stats">
+
+<span>
+<span class="material-icons">article</span>
+${item.postNumber} постів
+</span>
+
+<span>
+<span class="material-icons">repeat</span>
+кожні ${item.repeatAfter} днів
 </span>
 
 </div>
@@ -322,6 +368,7 @@ ${item.time}
 <button class="delete icon-btn">
 <span class="material-icons">delete</span>
 </button>
+
 </div>
 `
             card.querySelector(".delete").onclick = () => {
@@ -352,8 +399,10 @@ ${item.time}
 
         if (data) {
             date.value = data.date
-            time.value = data.time
+            partDate.value = data.partDate
             type.value = data.type
+            postNumber.value = data.postNumber
+            repeatAfter.value = data.repeatAfter
         } else {
             form.reset()
         }
@@ -373,11 +422,12 @@ ${item.time}
     form.onsubmit = (e) => {
 
         e.preventDefault()
-
         const item = {
             date: date.value,
-            time: time.value,
-            type: type.value
+            partDate: partDate.value,
+            type: type.value,
+            postNumber: postNumber.value,
+            repeatAfter: repeatAfter.value
         }
 
         if (editIndex !== null) {

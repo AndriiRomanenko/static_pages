@@ -348,12 +348,12 @@
 
             <div class="input-wrapper">
                 <label for="postNumber">Кількість постів</label>
-                <input type="number" id="postNumber" required>
+                <input type="number" id="postNumber" min="1" required>
             </div>
 
             <div class="input-wrapper">
                 <label for="repeatAfter">Повтор через (днів)</label>
-                <input type="number" id="repeatAfter" required>
+                <input type="number" id="repeatAfter" min="1" required>
             </div>
 
             <div class="input-wrapper">
@@ -396,6 +396,7 @@
 
     let tg = window.Telegram.WebApp
     tg.expand();
+    // установка сегодняшней даты и ограничения
 
     function render() {
 
@@ -480,7 +481,26 @@ ${item.pinMessage ? `
                 showForm(item)
             }
             list.appendChild(card)
+
+
         })
+    }
+    function setDefaultValues() {
+        const dateInput = document.getElementById("date")
+        const today = new Date()
+        let month = today.getMonth() + 1 < 9 ? `0${today.getMonth() + 1}` : today.getMonth() + 1
+        let day = today.getDate() < 9 ? `0${today.getDate()}` : today.getDate()
+        const todayStr = `${today.getFullYear()}-${month}-${day}`
+        dateInput.min = todayStr
+        dateInput.value = todayStr
+
+        const postNumber = document.getElementById("postNumber")
+        postNumber.min = 1
+        postNumber.value = 1
+
+        const repeatAfter = document.getElementById("repeatAfter")
+        repeatAfter.min = 1
+        repeatAfter.value = 1
     }
 
     function save() {
@@ -493,15 +513,18 @@ ${item.pinMessage ? `
         formContainer.classList.remove("hidden")
         addBtn.style.display = "none"
 
+
         if (data) {
             date.value = data.date
             partDate.value = data.partDate
             type.value = data.type
-            postNumber.value = data.postNumber
-            repeatAfter.value = data.repeatAfter
+            postNumber.value = parseInt(data.postNumber)
+            repeatAfter.value = parseInt(data.repeatAfter)
             pinMessage.checked = data.pinMessage || false
+
         } else {
             form.reset()
+            setDefaultValues()
         }
 
     }
@@ -523,8 +546,8 @@ ${item.pinMessage ? `
             date: date.value,
             partDate: partDate.value,
             type: type.value,
-            postNumber: postNumber.value,
-            repeatAfter: repeatAfter.value,
+            postNumber: parseInt(postNumber.value),
+            repeatAfter: parseInt(repeatAfter.value),
             pinMessage: pinMessage.checked
         }
 

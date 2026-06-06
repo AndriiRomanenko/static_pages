@@ -41,162 +41,280 @@
     }
 </style>
 <body style="background-color: #ffffff">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-            integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-            crossorigin="anonymous"></script>
-    <button type="button" 
-            id="closeBtn"
-            class="btn btn-danger btn-full-width">Закрити та вийти</button>
-    <div class="mt-3 text-center fs-1">Дата та тип підписки</div>
-    <div class="container-md">
-        <div class="padding-top"></div>
-        <div class="card">
-            <div class="card-header">
-                <div class="text-center fs-5">Тип підписки</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+<button type="button"
+        id="closeBtn"
+        class="btn btn-danger btn-full-width">Закрити та вийти</button>
+<div class="mt-3 text-center fs-1">Дата та тип підписки</div>
+<div class="container-md">
+    <div class="padding-top"></div>
+    <div class="card">
+        <div class="card-header">
+            <div class="text-center fs-5">Тип підписки</div>
+        </div>
+        <div class="card-body" id="subTypeGroup">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="subType" id="test">
+                <label class="form-check-label" for="test">
+                    ⏲️ Тестова підписка
+                </label>
             </div>
-            <div class="card-body" id="subTypeGroup">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="subType" id="test">
-                    <label class="form-check-label" for="test">
-                        ⏲️ Тестова підписка
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="subType" id="paid">
-                    <label class="form-check-label" for="paid">
-                        💶 Платна підписка
-                    </label>
-                </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="subType" id="paid">
+                <label class="form-check-label" for="paid">
+                    💶 Платна підписка
+                </label>
             </div>
         </div>
-        <div class="padding-top"></div>
-        <div class="card">
-            <div class="card-header">
-                <div class="text-center fs-5">Термін підписки</div>
+    </div>
+    <div class="padding-top"></div>
+    <div class="card">
+        <div class="card-header">
+            <div class="text-center fs-5">Термін підписки</div>
+        </div>
+        <div class="card-body" id="subExpGroup">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="subExp" id="one">
+                <label class="form-check-label" for="one">
+                    1️⃣ місяць
+                </label>
             </div>
-            <div class="card-body" id="subExpGroup">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="subExp" id="one">
-                    <label class="form-check-label" for="one">
-                        1️⃣ місяць
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="subExp" id="three">
-                    <label class="form-check-label" for="three">
-                        3️⃣ місяці
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="subExp" id="six">
-                    <label class="form-check-label" for="six">
-                        6️⃣ місяців
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="subExp" id="other">
-                    <label class="form-check-label" for="other">
-                        📅 обрати дату
-                    </label>
-                </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="subExp" id="three">
+                <label class="form-check-label" for="three">
+                    3️⃣ місяці
+                </label>
             </div>
-            <div class="center padding-bottom-1"
-                 data-month-format="month YYYY"
-                 data-first-day-of-the-week="2"
-                 data-day-format="DDD"
-                 id="my-calendar" hidden></div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="subExp" id="six">
+                <label class="form-check-label" for="six">
+                    6️⃣ місяців
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="subExp" id="other">
+                <label class="form-check-label" for="other">
+                    📅 обрати дату
+                </label>
             </div>
         </div>
-    <div class="padding-bottom-3"></div>
+        <div class="center padding-bottom-1"
+             data-month-format="month YYYY"
+             data-first-day-of-the-week="2"
+             data-day-format="DDD"
+             id="my-calendar" hidden></div>
+    </div>
+    <div class="padding-top"></div>
+    <div class="card" id="payInfo" hidden>
+<!--    <div class="card" id="payInfo">-->
+        <div class="card-header">
+            <div class="text-center fs-5">Інформація про платіж</div>
+        </div>
+        <div class="card-body" id="123">
+            <div class="input-group mb-3">
+                <span class="input-group-text">Ціна (грн)</span>
+                <input type="number" class="form-control" id="price-hrn" aria-label="Sizing example input" aria-describedby="price-hrn">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Ціна (валюта)</span>
+                <input type="number" class="form-control" id="price-val" aria-label="Sizing example input" aria-describedby="price-val">
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="val-type">Тип валюти</label>
+                <select class="form-select" id="val-type">
+                    <option selected>Гривня</option>
+                    <option>Євро</option>
+                    <option>Долари</option>
+                </select>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Сума ділиться на</span>
+                <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="divide-sum" id="divide-sum" value="1">
+            </div>
+            <div class="input-group">
+                <span class="input-group-text">Примітки</span>
+                <textarea class="form-control" aria-label="With textarea" id="sub-notes"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="padding-bottom-3"></div>
 </body>
 <script type="text/javascript">
-  let tg = window.Telegram.WebApp
-  tg.expand();
+    let tg = window.Telegram.WebApp
+    tg.expand();
 
-  let element = document.getElementById("my-calendar");
-  let myCalendar = jsCalendar.new(element);
-  let expired = new Date().toLocaleDateString('en-GB');
-  let subType = "none";
+    let payInfoComponent = document.getElementById("payInfo");
+    let element = document.getElementById("my-calendar");
+    let divideSumEl = document.getElementById("divide-sum");
+    let myCalendar = jsCalendar.new(element);
+    let expired = new Date().toLocaleDateString('en-GB');
+    let subType = "none";
+    let divideSumOn = 1;
+    let hrnPrice = 0;
+    let valPrice = 0;
+    let valType = 'Гривня';
+    let notes = '';
 
-  myCalendar.onDateClick(function(event, date){
-     const chosenDate = date.toLocaleDateString('en-GB');
-     expired = chosenDate;
-     myCalendar.set(chosenDate);
-     isMainButtonActive();
-  });
+    myCalendar.onDateClick(function(event, date){
+        const chosenDate = date.toLocaleDateString('en-GB');
+        expired = chosenDate;
+        myCalendar.set(chosenDate);
+        isMainButtonActive();
+        divideSumEl.value = monthDiff(expired);
+        divideSumOn = monthDiff(expired)
+    });
 
-  const subExpGroup = document.getElementById("subExpGroup");
-  const subTypeGroup = document.getElementById("subTypeGroup");
+    const subExpGroup = document.getElementById("subExpGroup");
+    const subTypeGroup = document.getElementById("subTypeGroup");
 
-  subExpGroup.addEventListener("input", event => {
-    if (event.target.id === "other") {
-        element.hidden = false;
-        expired = new Date().toLocaleDateString('en-GB');
-        window.scrollTo(0, document.body.scrollHeight);
-    } else {
-        element.hidden = true;
-        const date = new Date();
-        if (event.target.id === "one") {
-            const newDate = new Date(date.setMonth(date.getMonth() + 1));
-            expired = newDate.toLocaleDateString('en-GB');
+    function monthDiff(expDate) {
+        const startDate = new Date();
+        const splitExpired = expDate.split("/");
+        let months = (splitExpired[2] - startDate.getFullYear()) * 12 + ((splitExpired[1]-1) - startDate.getMonth());
+        if (splitExpired[0] < startDate.getDate()) {
+            months--;
         }
-        if (event.target.id === "three") {
-            const newDate = new Date(date.setMonth(date.getMonth() + 3));
-            expired = newDate.toLocaleDateString('en-GB');
+
+        // return months;
+        return months === 0 ? 1 : months;
+    }
+
+    subExpGroup.addEventListener("input", event => {
+        if (event.target.id === "other") {
+            element.hidden = false;
+            expired = new Date().toLocaleDateString('en-GB');
+            window.scrollTo(0, document.body.scrollHeight);
+        } else {
+            element.hidden = true;
+            const date = new Date();
+            if (event.target.id === "one") {
+                const newDate = new Date(date.setMonth(date.getMonth() + 1));
+                expired = newDate.toLocaleDateString('en-GB');
+                divideSumEl.value = 1;
+                divideSumOn = 1
+            }
+            if (event.target.id === "three") {
+                const newDate = new Date(date.setMonth(date.getMonth() + 3));
+                expired = newDate.toLocaleDateString('en-GB');
+                divideSumEl.value = 3;
+                divideSumOn = 3
+            }
+            if (event.target.id === "six") {
+                const newDate = new Date(date.setMonth(date.getMonth() + 6));
+                expired = newDate.toLocaleDateString('en-GB');
+                divideSumEl.value = 6;
+                divideSumOn = 6
+            }
         }
-        if (event.target.id === "six") {
-            const newDate = new Date(date.setMonth(date.getMonth() + 6));
-            expired = newDate.toLocaleDateString('en-GB');
+        isMainButtonActive();
+    }, false);
+
+    subTypeGroup.addEventListener("input", event => {
+        subType = event.target.id;
+        payInfoComponent.hidden = subType === 'test'
+        isMainButtonActive();
+    }, false);
+
+    let priceHrnComp = document.getElementById("price-hrn");
+    priceHrnComp.addEventListener("input", event => {
+        hrnPrice = event.target.value > 0 ? event.target.value : 0;
+        isMainButtonActive();
+    }, false);
+
+    priceHrnComp.addEventListener('change', () => {
+        if (+priceHrnComp.value < 1) {
+            priceHrnComp.value = '';
+        }
+    });
+
+    let priceValComp = document.getElementById("price-val");
+    priceValComp.addEventListener("input", event => {
+        valPrice = event.target.value > 0 ? event.target.value : 0;
+        isMainButtonActive();
+    }, false);
+
+    priceValComp.addEventListener('change', () => {
+        if (+priceValComp.value < 1) {
+            priceValComp.value = '';
+        }
+    });
+
+    let valTypeComp = document.getElementById("val-type");
+    valTypeComp.addEventListener("input", event => {
+        valType = event.target.value;
+        isMainButtonActive();
+    }, false);
+
+    let notesComp = document.getElementById("sub-notes");
+    notesComp.addEventListener("input", event => {
+        notes = event.target.value;
+        isMainButtonActive();
+    }, false);
+
+    divideSumEl.addEventListener("input", event => {
+        divideSumOn = event.target.value > 0 ? event.target.value : 1;
+        isMainButtonActive();
+    }, false);
+
+    divideSumEl.addEventListener('change', () => {
+        if (+divideSumEl.value < 1) {
+            divideSumEl.value = 1;
+        }
+    });
+
+    function isShow() {
+        const expRes = new Date();
+        const splitExpired = expired.split("/");
+        expRes.setDate(splitExpired[0]);
+        expRes.setMonth(splitExpired[1]-1);
+        expRes.setFullYear(splitExpired[2]);
+
+        let paidPredicate = hrnPrice > 0 && divideSumOn > 0;
+        let check = subType === "paid" ? paidPredicate : true;
+
+        return subType !== "none" && expRes > new Date() && check;
+    }
+
+    function isMainButtonActive() {
+        if (isShow()) {
+            tg.MainButton.show();
+        } else {
+            tg.MainButton.hide();
         }
     }
-    isMainButtonActive();
-  }, false);
 
-  subTypeGroup.addEventListener("input", event => {
-     subType = event.target.id;
-     isMainButtonActive();
-  }, false);
+    tg.MainButton.setText('Підписати');
+    Telegram.WebApp.onEvent('mainButtonClicked', function() {
+        const data = JSON.stringify({
+            divideSumOn: divideSumOn,
+            hrnPrice: hrnPrice,
+            valPrice: valPrice,
+            valType: valType,
+            notes: notes,
+            subscriptionType: subType,
+            expirationDate: expired,
+            type: 7
+        });
+        tg.sendData(data);
+        tg.close();
+    });
 
-  function isShow() {
-    const expRes = new Date();
-    const splitExpired = expired.split("/");
-    expRes.setDate(splitExpired[0]);
-    expRes.setMonth(splitExpired[1]-1);
-    expRes.setFullYear(splitExpired[2]);
-    return subType !== "none" && expRes > new Date();
-  }
-
-  function isMainButtonActive() {
-    if (isShow()) {
-        tg.MainButton.show();
-    } else {
-        tg.MainButton.hide();
-    }
-  }
-
-  tg.MainButton.setText('Підписати');
-  Telegram.WebApp.onEvent('mainButtonClicked', function() {
-      const data = JSON.stringify({
-        subscriptionType: subType,
-        expirationDate: expired,
-        type: 7
-      });
-      tg.sendData(data);
-      tg.close();
-  });
-
-  let closeButton = document.getElementById("closeBtn");
-  closeButton.addEventListener("click", event => {
-     const data = JSON.stringify({
-        type: 0,
-        closeType: 'finishSubscription'
-      });
-      tg.sendData(data);
-      tg.close();
-  }, false);
+    let closeButton = document.getElementById("closeBtn");
+    closeButton.addEventListener("click", event => {
+        const data = JSON.stringify({
+            type: 0,
+            closeType: 'finishSubscription'
+        });
+        tg.sendData(data);
+        tg.close();
+    }, false);
 
 </script>
 </html>

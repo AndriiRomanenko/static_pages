@@ -121,16 +121,8 @@
                 <input type="number" class="form-control" id="price-hrn" aria-label="Sizing example input" aria-describedby="price-hrn">
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text">Ціна (валюта)</span>
+                <span class="input-group-text">Ціна (євро)</span>
                 <input type="number" class="form-control" id="price-val" aria-label="Sizing example input" aria-describedby="price-val">
-            </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="val-type">Тип валюти</label>
-                <select class="form-select" id="val-type">
-                    <option selected>Гривня</option>
-                    <option>Євро</option>
-                    <option>Долари</option>
-                </select>
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text">Сума ділиться на</span>
@@ -159,7 +151,6 @@
     let divideSumOn = 1;
     let hrnPrice = 0;
     let valPrice = 0;
-    let valType = 'Гривня';
     let notes = '';
 
     myCalendar.onDateClick(function(event, date){
@@ -246,12 +237,6 @@
         }
     });
 
-    let valTypeComp = document.getElementById("val-type");
-    valTypeComp.addEventListener("input", event => {
-        valType = event.target.value;
-        isMainButtonActive();
-    }, false);
-
     let notesComp = document.getElementById("sub-notes");
     notesComp.addEventListener("input", event => {
         notes = event.target.value;
@@ -296,7 +281,6 @@
             divideSumOn: divideSumOn,
             hrnPrice: hrnPrice,
             valPrice: valPrice,
-            valType: valType,
             notes: notes,
             subscriptionType: subType,
             expirationDate: expired,

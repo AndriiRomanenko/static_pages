@@ -111,11 +111,17 @@
     </div>
     <div class="padding-top"></div>
     <div class="card" id="payInfo" hidden>
-<!--    <div class="card" id="payInfo">-->
         <div class="card-header">
             <div class="text-center fs-5">Інформація про платіж</div>
         </div>
         <div class="card-body" id="123">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" value="" id="debtCheck">
+                <label class="form-check-label" for="debtCheck">
+                    Підписка в борг
+                </label>
+            </div>
+            <div class="padding-top"></div>
             <div class="input-group mb-3">
                 <span class="input-group-text">Ціна (грн)</span>
                 <input type="number" class="form-control" id="price-hrn" aria-label="Sizing example input" aria-describedby="price-hrn">
@@ -145,8 +151,10 @@
     let payInfoComponent = document.getElementById("payInfo");
     let element = document.getElementById("my-calendar");
     let divideSumEl = document.getElementById("divide-sum");
+    let debtCheckEl = document.getElementById("debtCheck");
     let myCalendar = jsCalendar.new(element);
     let expired = new Date().toLocaleDateString('en-GB');
+    let isDebt = false;
     let subType = "none";
     let divideSumOn = 1;
     let hrnPrice = 0;
@@ -220,9 +228,13 @@
     }, false);
 
     priceHrnComp.addEventListener('change', () => {
-        if (+priceHrnComp.value < 1) {
-            priceHrnComp.value = '';
+        if (+priceHrnComp.value < 0) {
+            priceHrnComp.value = 0;
         }
+    });
+
+    debtCheckEl.addEventListener('change', () => {
+        debtCheckEl.checked ? isDebt = true : isDebt = false;
     });
 
     let priceValComp = document.getElementById("price-val");
@@ -232,8 +244,8 @@
     }, false);
 
     priceValComp.addEventListener('change', () => {
-        if (+priceValComp.value < 1) {
-            priceValComp.value = '';
+        if (+priceValComp.value < 0) {
+            priceValComp.value = 0;
         }
     });
 
@@ -261,10 +273,7 @@
         expRes.setMonth(splitExpired[1]-1);
         expRes.setFullYear(splitExpired[2]);
 
-        let paidPredicate = hrnPrice > 0 && divideSumOn > 0;
-        let check = subType === "paid" ? paidPredicate : true;
-
-        return subType !== "none" && expRes > new Date() && check;
+        return subType !== "none" && expRes > new Date();
     }
 
     function isMainButtonActive() {
@@ -284,6 +293,7 @@
             notes: notes,
             subscriptionType: subType,
             expirationDate: expired,
+            isDebt: isDebt,
             type: 10
         });
         tg.sendData(data);

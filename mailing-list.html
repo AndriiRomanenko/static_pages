@@ -142,6 +142,9 @@
         <div class="card-body" id="messageText">
             <textarea class="form-control" aria-label="With textarea" rows="7"></textarea>
         </div>
+        <div class="card-footer text-body-secondary" id="textSizeFooter">
+            Розмір тексту = 0 байт
+        </div>
     </div>
     <div class="padding-top"></div>
     <div class="card m-2">
@@ -334,6 +337,7 @@
         hasText = event.target.value.trim() !== '';
         mailText = event.target.value.trim();
         isMainButtonActive()
+        setFooterInfo(mailText)
     }, false);
 
     subTypeGroup.addEventListener("change", event => {
@@ -448,6 +452,29 @@
             tg.MainButton.show();
         } else {
             tg.MainButton.hide();
+        }
+    }
+
+    function setFooterInfo(text) {
+        const size = new TextEncoder().encode(text).length;
+        const footer = document.getElementById('textSizeFooter');
+
+        if (size > 3800) {
+
+            footer.textContent = `Розмір тексту = ${size} байт (на ${size - 3800} більше) ⛔️`;
+
+            footer.classList.add('text-danger');
+
+            footer.classList.remove('text-success');
+
+        } else {
+
+            footer.textContent = `Розмір тексту = ${size} байт ✅`;
+
+            footer.classList.add('text-success');
+
+            footer.classList.remove('text-danger');
+
         }
     }
 
